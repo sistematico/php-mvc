@@ -94,7 +94,6 @@ Agreadeço do fundo do meu :heart: as pessoas que me ajudaram a chegar até aqui
 - [Nginx](https://nginx.org)
 - [PHP](https://www.php.net)
 - [PHP-FIG](https://www.php-fig.org/psr/psr-4/)
-- [Mini3](https://github.com/panique/mini3)
 - [Twitter Boostrap 5](https://getbootstrap.com)
 
 ## Contribua!
@@ -107,7 +106,7 @@ Agreadeço do fundo do meu :heart: as pessoas que me ajudaram a chegar até aqui
 
 ## Agradecimentos
 
-Agradeço de :heart: a JetBrains por me fornecer de forma gratuita as melhores ferramentas do mundo.
+Agradeço a JetBrains por me fornecer de forma gratuita as melhores ferramentas do mundo.
 
 [![JetBrains](https://i.imgur.com/fRGi3wI.png)](https://www.jetbrains.com) [![PhpStorm](https://i.imgur.com/lqhtz4L.png)](https://www.jetbrains.com/phpstorm/) [![WebStorm](https://i.imgur.com/hATeqvO.png)](https://www.jetbrains.com/webstorm/) [![DataGrip](https://i.imgur.com/Lhx4pdh.png)](https://www.jetbrains.com/datagrip/)
 
