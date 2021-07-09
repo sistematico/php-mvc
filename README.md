@@ -1,4 +1,4 @@
-# PHP MVC CRUD (Lite Version)
+# PHP MVC
 
 Projeto de CRUD(Create Read Update Delete) usando o [PHP](https://php.net) com o modelo MVC(Model View Controller) e SQLite como banco de dados.
 
@@ -6,11 +6,10 @@ Projeto de CRUD(Create Read Update Delete) usando o [PHP](https://php.net) com o
 
 | Ramificação           | Painel de Admin       | CSS Framework         | Composer                | Status                  |
 | --------------------- | --------------------- | --------------------- | :---------------------: | :---------------------: |
-| [full](/../../tree/full)     | :heavy_check_mark: | Twitter Bootstrap | :heavy_check_mark: | :recycle: |
-| [lite](/../../tree/lite)     | :x:                | Twitter Bootstrap | :x:                | :recycle: |
-| [lite](/../../tree/rest)     | :x:                | Twitter Bootstrap | :x:                | :recycle: |
-| [ajax](/../../tree/ajax)     | :x:                | Twitter Bootstrap | :x:                | :x: |
-| [router](/../../tree/router) | :x:                | Twitter Bootstrap | :x:                | :x: |
+| [full](/../../tree/full)     | :heavy_check_mark: | Twitter Bootstrap 5 | :heavy_check_mark: | :recycle: |
+| [lite](/../../tree/lite)     | :x:                | Twitter Bootstrap 5 | :x:                | :recycle: |
+| [lite](/../../tree/rest)     | :x:                | :x:                 | :x:                | :recycle: |
+| [ajax](/../../tree/ajax)     | :x:                | Twitter Bootstrap 5 | :x:                | :x: |
 | [single](/../../tree/single) | :x:                | Bulma             | :x:                | :x: |
 
 ## Pré-requisitos
