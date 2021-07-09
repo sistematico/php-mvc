@@ -21,8 +21,9 @@ Projeto de CRUD(Create Read Update Delete) usando o [PHP](https://php.net) com o
 
 ## Instalação
 
-- Clone este repositório em um subdiretório qualquer do seu servidor web: `git clone -b lite https://github.com/sistematico/php-mvc /var/www/html/php-mvc-lite`
-- Acesse seu site https://localhost/php-mvc-lite
+- Clone este repositório em um subdiretório qualquer do seu servidor web: `git clone -b lite https://github.com/sistematico/php-mvc /var/www/html/php-mvc`
+- Rode o composer: `cd /var/www/html/php-mvc && composer install`
+- Acesse seu site https://localhost
 - Reze para que tudo funcione como deveria.
 
 ## Nginx
