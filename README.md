@@ -4,8 +4,8 @@ Projeto de CRUD(Create Read Update Delete) usando o [PHP](https://php.net) com o
 
 ## Outras ramificações
 
-| Ramificação        | Painel de Admin    | CSS Framework      | Composer             | Status               |
-| ------------------ | ------------------ | ------------------ | :------------------: | :------------------: |
+| Ramificação           | Painel de Admin       | CSS Framework         | Composer                | Status                  |
+| --------------------- | --------------------- | --------------------- | :---------------------: | :---------------------: |
 | [full](/../../tree/full)     | :heavy_check_mark: | Twitter Bootstrap | :heavy_check_mark: | :recycle: |
 | [lite](/../../tree/lite)     | :x:                | Twitter Bootstrap | :x:                | :recycle: |
 | [lite](/../../tree/rest)     | :x:                | Twitter Bootstrap | :x:                | :recycle: |
