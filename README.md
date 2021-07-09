@@ -16,7 +16,7 @@ Projeto de CRUD(Create Read Update Delete) usando o [PHP](https://php.net) com o
 ## Pré-requisitos
 
 - [Nginx](https://www.nginx.com) ou [Apache](https://www.apache.org)
-- [PHP 8](https://php.net)
+- [PHP 7.4](https://php.net)
 - [Docker(opcional)](https://www.docker.com/)
 - [Fé](https://pt.wikipedia.org/wiki/F%C3%A9)
 
@@ -45,26 +45,26 @@ server {
     ssl_session_cache shared:SSL:10m;
     ssl_session_timeout 5m;
 
-    ssl_certificate      /etc/ssl/nginx/favoritos.pem;
-    ssl_certificate_key  /etc/ssl/nginx/favoritos-key.pem;
+    ssl_certificate      /etc/ssl/nginx/localhost.pem;
+    ssl_certificate_key  /etc/ssl/nginx/localhost-key.pem;
 
     error_log  /var/log/nginx/error.log;
     access_log /var/log/nginx/access.log;
 
     server_name localhost;
     index index.php;
-    root /var/www/html/php-mvc-lite/public;
+    root /var/www/html/php-mvc/public;
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;
         # ou
-        $ try_files /$uri /$uri/ /index.php?url=$uri&$args;
+        # try_files /$uri /$uri/ /index.php?url=$uri&$args;
     }
 
     location ~ \.php$ {
         try_files $uri =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass php:9000;
+        fastcgi_pass 127.0.0.1:9000;
         fastcgi_index index.php;
         include fastcgi_params;
     }
@@ -79,11 +79,19 @@ Configuração recomendada do Docker:
 
 ## Demo
 
-- [https://lite.lucasbrum.net](https://lite.lucasbrum.net)
+- [https://mvc.lucasbrum.net](https://mvc.lucasbrum.net)
 
 ## Créditos
 
+Agreadeço do fundo do meu :heart: as pessoas que me ajudaram a chegar até aqui.
+
+- [William Correa](https://github.com/wilcorrea)
+- [Luciano Charles de Souza](https://github.com/LucianoCharlesdeSouza)
+- [Dave Hollingworth](https://www.udemy.com/course/php-mvc-from-scratch)
+- [William Costa](https://www.youtube.com/watch?v=TmeyoTNu748&list=PL_zkXQGHYosGQwNkMMdhRZgm4GjspTnXs)
+- [Traversy Media](https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA)
 - [Arch Linux](https://archlinux.org)
+- [Nginx](https://nginx.org)
 - [PHP](https://www.php.net)
 - [PHP-FIG](https://www.php-fig.org/psr/psr-4/)
 - [Mini3](https://github.com/panique/mini3)
