@@ -88,6 +88,7 @@ Agreadeço do fundo do meu :heart: as pessoas que me ajudaram a chegar até aqui
 - [Luciano Charles de Souza](https://github.com/LucianoCharlesdeSouza)
 - [Dave Hollingworth](https://www.udemy.com/course/php-mvc-from-scratch)
 - [William Costa](https://www.youtube.com/watch?v=TmeyoTNu748&list=PL_zkXQGHYosGQwNkMMdhRZgm4GjspTnXs)
+- [Diogo](https://dzlabs.tech)
 - [Traversy Media](https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA)
 - [Arch Linux](https://archlinux.org)
 - [Nginx](https://nginx.org)
