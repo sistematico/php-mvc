@@ -60,7 +60,6 @@ abstract class Controller
      */
     protected function before()
     {
-        die("Before Middleware");
     }
 
     /**
