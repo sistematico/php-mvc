@@ -1,11 +1,8 @@
 {
-    "name": "sistematico/projeto",
+    "name": "sistematico/php-mvc",
     "type": "project",
     "description": "Um bootstrap de CRUD usando o PHP MVC",
-    "keywords": [
-        "php",
-        "mvc"
-    ],
+    "keywords": ["php","mvc"],
     "homepage": "https://github.com/sistematico/php-mvc",
     "license": "Unlicense",
     "authors": [
@@ -18,7 +15,6 @@
     ],
     "autoload": {
         "psr-4": {
-            "Core\\": "app/Core/",
             "App\\": "app/"
         }
     }
