@@ -4,27 +4,22 @@ Projeto de CRUD(Create Read Update Delete) usando o [PHP](https://php.net) com o
 
 ## Outras ramificações
 
-| Ramificação           | Painel de Admin       | CSS Framework         | Composer                | Status                  |
-| --------------------- | --------------------- | --------------------- | :---------------------: | :---------------------: |
-| [full](/../../tree/full)     | :heavy_check_mark: | Twitter Bootstrap v5.0.2 | :heavy_check_mark: | :recycle: |
-| [lite](/../../tree/lite)     | :x:                | Twitter Bootstrap v5.0.2 | :x:                | :recycle: |
-| [lite](/../../tree/rest)     | :x:                | :x:                      | :x:                | :recycle: |
-| [ajax](/../../tree/ajax)     | :x:                | Twitter Bootstrap v5.0.2 | :x:                | :x: |
-| [single](/../../tree/single) | :x:                | Bulma v0.9.3             | :x:                | :x: |
+| Ramificação                  | Frontend                     | Painel de Admin              | CSS Framework                | Composer                       | Status                         |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | :----------------------------: | :----------------------------: |
+| full(este branch)            | :heavy_check_mark:           | :heavy_check_mark:           | Twitter Bootstrap v5.0.2     | :heavy_check_mark:             | :recycle:                      |
+| [rest](/../../tree/rest)     | :x:                          | :x:                          | :x:                          | :x:                            | :recycle:                      |
 
 ## Pré-requisitos
 
 - [Nginx](https://www.nginx.com) ou [Apache](https://www.apache.org)
 - [PHP 7.4](https://php.net)
 - [Docker(opcional)](https://www.docker.com/)
-- [Fé](https://pt.wikipedia.org/wiki/F%C3%A9)
 
 ## Instalação
 
 - Clone este repositório em um subdiretório qualquer do seu servidor web: `git clone -b lite https://github.com/sistematico/php-mvc /var/www/html/php-mvc`
 - Rode o composer: `cd /var/www/html/php-mvc && composer install`
 - Acesse seu site https://localhost
-- Reze para que tudo funcione como deveria.
 
 ## Nginx
 
@@ -56,9 +51,8 @@ server {
     root /var/www/html/php-mvc/public;
 
     location / {
-        try_files $uri $uri/ /index.php?$query_string;
-        # ou
-        # try_files /$uri /$uri/ /index.php?url=$uri&$args;
+        try_files /$uri /$uri/ /index.php?url=$uri&$args;
+        #try_files $uri $uri/ /index.php?$query_string;
     }
 
     location ~ \.php$ {
