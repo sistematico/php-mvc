@@ -27,7 +27,7 @@ class Pages extends View
             'message' => $message
         ]) : '';
 
-        return parent::adminLogin('login', 'Login', ['status' => $status]);
+        return parent::adminLogin('admin/login', 'Login', ['status' => $status]);
     }
     
     public static function setAdminLogin($request)
