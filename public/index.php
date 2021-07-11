@@ -4,10 +4,10 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 
 use App\Controller\Pages;
 
-$request = new App\Http\Request;
+$response = new App\Http\Response(200, 'Olá Mundo');
 
 echo '<pre>';
-print_r($request);
+print_r($response);
 echo '</pre>';
 exit;
 
