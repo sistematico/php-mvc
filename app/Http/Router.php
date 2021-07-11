@@ -67,7 +67,12 @@ class Router
     public function dispatch()
     {
         try {
-            throw new \Exception("Página não encontrada", 404);            
+            $route = $this->getRoute();
+
+            echo '<pre>';
+            print_r($route);
+            echo '</pre>';
+            exit;
         } catch (\Exception $e) {
             return new Response($e->getCode(), $e->getMessage());            
         }
