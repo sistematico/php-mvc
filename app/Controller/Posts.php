@@ -9,7 +9,7 @@ class Posts extends View
 {
     public static function getPosts()
     {
-        return parent::page('posts', 'Posts');
+        return Post::getPosts(null, 'id DESC');
     }
 
     public static function getPost()
