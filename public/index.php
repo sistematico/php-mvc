@@ -22,6 +22,7 @@ View::init([
 
 Queue::setMap([
     'maintenance' => \App\Http\Middleware\Maintenance::class,
+    'admin-login' => \App\Http\Middleware\AdminLogin::class,
     'admin-logout' => \App\Http\Middleware\AdminLogout::class
 ]);
 Queue::setDefault(['maintenance']);
@@ -35,6 +36,9 @@ $router->get('/', [
 ]);
 
 $router->get('/admin', [
+    'middlewares' => [
+        'admin-login'
+    ],
     function($request) {
         return new Response(200, User::getAdmin($request));
     }
@@ -56,6 +60,9 @@ $router->post('/admin/login', [
 ]);
 
 $router->get('/admin/logout', [
+    'middlewares' => [
+        'admin-login'
+    ],
     function($request) {
         return new Response(200, User::setAdminLogout($request));
     }

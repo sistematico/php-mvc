@@ -35,4 +35,20 @@ class User extends View
 
         $request->getRouter()->redirect('/admin');
     }
+
+    public static function setAdminLogout($request)
+    {
+        $postVars = $request->getPostVars();
+        $email = $postVars['email'];
+        $password = $postVars['password'];
+
+        $user = EntityUser::getUserByEmail($email);
+        if (!$user instanceof EntityUser OR !password_verify($password, $user->password)) {
+            return self::getAdminLogin($request, 'E-mail ou senha inválidos.');
+        }
+
+        Session::adminLogin($user);
+
+        $request->getRouter()->redirect('/admin');
+    }
 }
