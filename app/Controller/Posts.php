@@ -7,10 +7,21 @@ use \App\Core\View;
 
 class Posts extends View
 {
+    private static function getPostItems()
+    {
+        $items = '';
+
+        $results = Post::getPosts();
+
+        return $items;
+    }
+
     public static function getPosts()
     {
         //return Post::getPosts(null, 'id DESC');
-        return parent::page('posts', 'Posts');
+        return parent::page('posts', 'Posts', [
+            'items' => self::getPostItems()
+        ]);
     }
 
     public static function getPost($request)
