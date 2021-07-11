@@ -36,7 +36,8 @@ class Posts extends View
     public static function getPosts($request)
     {
         return parent::page('posts', 'Posts', [
-            'items' => self::getPostItems($request)
+            'items' => self::getPostItems($request, $pagination),
+            'pagination' => parent::getPagination($request, $pagination)
         ]);
     }
 
