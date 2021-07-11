@@ -13,7 +13,7 @@ class Post
     public $likes;
     public $date;
 
-    public static function create()
+    public function create()
     {
         $this->id = (new Database('posts'))->insert([
             'title' => $this->title,
