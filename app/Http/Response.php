@@ -26,4 +26,13 @@ class Response
     {
         $this->headers[$key] = $value;
     }
+
+    public function sendResponse()
+    {
+        switch ($this->contentType) {
+            case 'text/html':
+                echo $this->content;
+                exit;
+        }
+    }
 }
