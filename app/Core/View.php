@@ -14,6 +14,12 @@ class View
     private static function content($view)
     {
         $file = dirname(__DIR__) . "/view/{$view}.html";
+
+        echo '<pre>';
+        print_r($file);
+        echo '</pre>';
+        exit;
+
         return file_exists($file) ? file_get_contents($file) : '';
     }
 
