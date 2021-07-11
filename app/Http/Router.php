@@ -61,6 +61,11 @@ class Router
             if (preg_match($patternRoute, $uri, $matches)) {
                 if (isset($methods[$httpMethod])) {
                     unset($matches[0]);
+
+                    $keys = $methods[$httpMethod]['variables'];
+                    $methods[$httpMethod]['variables'] = array_combine($keys, $matches);
+                    $methods[$httpMethod]['variables']['request'] = $this->request;
+
                     return $methods[$httpMethod];
                 }
                 throw new \Exception("Método não permitido", 405);                
