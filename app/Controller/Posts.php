@@ -13,6 +13,14 @@ class Posts extends View
 
         $results = Post::getPosts();
 
+        while ($row = $results->fetchObject(Post::class)) {
+            $items .= parent::render('posts/post',[
+                'title' => $row->title,
+                'description' => $row->description
+            ]);
+
+        }
+
         return $items;
     }
 
