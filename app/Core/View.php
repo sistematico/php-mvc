@@ -34,7 +34,7 @@ class View
             'header' => self::render($dir . '/header'),
             'footer' => self::render($dir . '/footer'),
             'title' => $title,
-            'content' => self::render($view, $vars)
+            'content' => self::render($dir . '/' . $view, $vars)
         ]);
     }
 }
