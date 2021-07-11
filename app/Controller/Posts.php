@@ -11,14 +11,15 @@ class Posts extends View
     private static function getPostItems($request)
     {
         $items = '';
+        
         $total = Post::getPosts(null, null, null, 'COUNT(*) as total')->fetchObject()->total;
+        
+        $queryParams = $request->getQueryParams();
+        $current = $queryParams['pagina'] ?? 1;
 
-        echo '<pre>';
-        print_r($total);
-        echo '</pre>';
-        exit;
+        $pagination = new Pagination($total, $current, 1);
 
-        $results = Post::getPosts(null, 'id DESC');
+        $results = Post::getPosts(null, 'id DESC', $pagination->getLimit());
 
         while ($row = $results->fetchObject(Post::class)) {
             $items .= parent::render('posts/post',[
