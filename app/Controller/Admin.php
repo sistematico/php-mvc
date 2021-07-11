@@ -8,6 +8,13 @@ use \App\Model\User as EntityUser;
 
 class Admin extends View
 {
+
+    private static $links = [
+        'home'  => ['label' => 'Painel',   'link' => URL . '/admin'],
+        'users' => ['label' => 'Usuários', 'link' => URL . '/admin/users'],
+        'posts' => ['label' => 'Posts',    'link' => URL . '/admin/posts']
+    ];
+
     public static function getAdmin()
     {
         return parent::pageAdmin('admin/dashboard', 'Painel de Admin');
