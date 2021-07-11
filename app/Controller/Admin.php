@@ -74,18 +74,11 @@ class Admin extends View
 
     public static function getAdminPanel($title, $content, $current)
     {       
-        // $contentPanel = parent::render('admin/sidebar', [
-        //     'menu' => self::getAdminMenu($current)
-        // ]);
-
-        //return parent::pageAdmin('admin/dashboard', 'Painel de Admin', $contentPanel);
-
-        return parent::render('admin/main', [
-            'header' => self::render('admin/header'),
-            'sidebar' => self::render('admin/sidebar', ['menu' => self::getAdminMenu($current)]),
-            'footer' => self::render('admin/footer'),
-            'content' => self::render('admin/dashboard'),
-            'title' => $title
+        $contentPanel = parent::render('admin/sidebar', [
+            'menu' => self::getAdminMenu($current),
+            'content' => $content,
         ]);
+
+        return parent::pageAdmin($title, $contentPanel);
     }
 }
