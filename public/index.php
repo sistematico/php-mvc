@@ -34,7 +34,7 @@ $router->get('/posts', [
 
 $router->post('/posts', [
     function($request) {
-        return new Response(200, Posts::setPost());
+        return new Response(200, Posts::setPost($request));
     }
 ]);
 
