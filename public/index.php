@@ -25,6 +25,4 @@ $router->get('/pagina/{id}/{acao}', [
     }
 ]);
 
-$router
-    ->dispatch()
-    ->sendResponse();
+$router->dispatch()->sendResponse();
