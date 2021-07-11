@@ -8,7 +8,7 @@ use \App\Core\Pagination;
 
 class Posts extends View
 {
-    private static function getPostItems($request)
+    private static function getPostItems($request, &$pagination)
     {
         $items = '';
         
