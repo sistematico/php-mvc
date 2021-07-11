@@ -50,8 +50,9 @@ class Admin extends View
         $request->getRouter()->redirect('/admin/login');
     }
 
-    private static function getAdminMenu($current)
+    public static function getAdminPanel($title, $content, $current)
     {
+
         $links = '';
 
         foreach (self::$links as $hash => $item) {
@@ -62,15 +63,13 @@ class Admin extends View
             ]);
         }
 
-        return parent::render('admin/menu/sidebar', [
+        $currentMenu = parent::render('admin/menu/sidebar', [
             'links' => $links
-        ]);
-    }
+        ]); 
 
-    public static function getAdminPanel($title, $content, $current)
-    {       
+
         $contentPanel = parent::render('admin/sidebar', [
-            'menu' => self::getAdminMenu($current),
+            'menu' => $currentMenu,
             'content' => $content,
         ]);
 
