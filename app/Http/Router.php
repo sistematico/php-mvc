@@ -83,11 +83,13 @@ class Router
     {
         try {
             $route = $this->getRoute();
+            if (!isset($route['controller'])) {
+                throw new \Exception("A URL não pode ser processada.", 500);
+            }
 
-            echo '<pre>';
-            print_r($route);
-            echo '</pre>';
-            exit;
+            $args = [];
+
+            return call_user_func_array($route['controller'], $args);
         } catch (\Exception $e) {
             return new Response($e->getCode(), $e->getMessage());            
         }
