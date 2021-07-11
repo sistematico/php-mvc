@@ -22,6 +22,8 @@ class View
     protected static function main($view, $title, $vars = [])
     {
         return View::render('main', [
+            'header' => self::render('header'),
+            'footer' => self::render('footer'),
             'title' => $title,
             'content' => self::render($view, $vars)
         ]);
