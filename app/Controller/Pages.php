@@ -21,7 +21,7 @@ class Pages extends View
         ]);
     }
 
-    public static function getAdminLogin($request, $message = '')
+    public static function getAdminLogin($request, $message = null)
     {
         $status = !is_null($message) ? View::render('admin/status',[
             'message' => $message
