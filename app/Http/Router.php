@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use \Closure;
+
 class Router
 {
     private $url = '';
