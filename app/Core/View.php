@@ -20,7 +20,7 @@ class View
     protected static function render($view, $vars = [])
     {
         $vars = array_merge(self::$vars, $vars);
-
+        
         $keys = array_map(function($item){
             return '{{' . $item . '}}'; 
         },array_keys($vars));
@@ -30,12 +30,7 @@ class View
 
     protected static function page($dir, $view, $title, $vars = [])
     {
-        echo '<pre>';
-        print_r($dir . '/header');
-        echo '</pre>';
-        exit;
-
-        return View::render($dir . '/' . $view, [
+        return View::render($dir . '/main', [
             'header' => self::render($dir . '/header'),
             'footer' => self::render($dir . '/footer'),
             'title' => $title,
