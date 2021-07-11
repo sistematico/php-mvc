@@ -4,7 +4,6 @@ namespace App\Core;
 
 class View
 {
-
     private static $vars = [];
 
     public static function init($vars = [])
