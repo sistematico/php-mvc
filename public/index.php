@@ -19,9 +19,9 @@ $router->get('/', [
     }
 ]);
 
-$router->get('/pagina/{id}', [
-    function($id) {
-        return new Response(200, 'Página 10');
+$router->get('/pagina/{id}/{acao}', [
+    function($id, $acao) {
+        return new Response(200, 'Página: ' . $id . ' - Ação: '. $acao);
     }
 ]);
 
