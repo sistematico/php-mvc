@@ -38,6 +38,11 @@ class View
         ]);
     }
 
+    protected static function userLogin($view, $title, $vars = [])
+    {
+        return View::render('login');
+    }
+
     protected static function pageAdmin($view, $title, $vars = [])
     {
         return View::render('admin/main', [
@@ -48,19 +53,31 @@ class View
         ]);
     }
 
+    protected static function adminLogin($view, $title, $vars = [])
+    {
+        return View::render('admin/login');
+    }
+
     public static function getPagination($request, $pagination)
     {
         $pages = $pagination->getPages();
 
         if (count($pages) <= 1) return '';
         
-        $link = '';
+        $links = '';
         $url = $request->getRouter()->getCurrentUrl();
         $queryParams = $request->getQueryParams();
 
         foreach ($pages as $page) {
-            $queryParams['pagina'] = $page['pagina'];
-            $link .= $url . '?' . http_build_query($queryParams);
+            $queryParams['pagina'] = $page['page'];
+            $link = $url . '?' . http_build_query($queryParams);
+
+            $links .= View::render('pagination/link', [
+                'page' => $page['page'],
+                'link' => $link
+            ]);
         }
+
+        return View::render('pagination/box', ['links' => $links]);
     }
 }

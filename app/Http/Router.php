@@ -32,9 +32,10 @@ class Router
             }
         }
 
+        $params['middlewares'] = $params['middlewares'] ?? [];
         $params['variables'] = [];        
-        $patternVariable = '/{(.*?)}/';
 
+        $patternVariable = '/{(.*?)}/';
         if (preg_match_all($patternVariable, $route, $matches)) {
             $route = preg_replace($patternVariable, '(.*?)', $route);
             $params['variables'] = $matches[1] ?? '';
@@ -110,7 +111,7 @@ class Router
                 $args[$name] = $route['variables'][$name] ?? '';
             }
 
-            return call_user_func_array($route['controller'], $args);
+            return (new \App\Http\Middleware\Queue($route['middlewares'], $route['controller'], $args))->next($this->request);
         } catch (\Exception $e) {
             return new Response($e->getCode(), $e->getMessage());            
         }

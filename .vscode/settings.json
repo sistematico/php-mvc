@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        "**/.github": true,
+        "**/.vscode": true,
+        "**/database": true,
+        "**/node_modules": true,
+        "**/vendor": true,
+        "composer.lock": true,
+        "LICENSE": true
+    }
+}
