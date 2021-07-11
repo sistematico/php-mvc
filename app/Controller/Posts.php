@@ -18,7 +18,6 @@ class Posts extends View
                 'title' => $row->title,
                 'description' => $row->description
             ]);
-
         }
 
         return $items;
@@ -37,7 +36,7 @@ class Posts extends View
         return parent::page('posts/new', 'Enviar post');
     }
 
-    public static function insertPost($request)
+    public static function setPost($request)
     {
         $postVars = $request->getPostVars();
 
