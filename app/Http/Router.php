@@ -32,14 +32,12 @@ class Router
             }
         }
 
-        $patternRoute = '/^' . str_replace('/', '\/', $route) . '';
+        $patternRoute = '/^' . str_replace('/', '\/', $route) . '$/';
+
+        $this->routes[$patternRoute][$method] = $params;
 
         echo '<pre>';
-        print_r($patternRoute);
-        echo '</pre>';
-
-        echo '<pre>';
-        print_r($params);
+        print_r($this);
         echo '</pre>';
         exit;
     }
