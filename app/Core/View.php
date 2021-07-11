@@ -38,11 +38,6 @@ class View
         ]);
     }
 
-    protected static function userLogin($view, $title, $vars = [])
-    {
-        return View::render('login');
-    }
-
     protected static function pageAdmin($view, $title, $vars = [])
     {
         return View::render('admin/main', [
@@ -55,7 +50,10 @@ class View
 
     protected static function adminLogin($view, $title, $vars = [])
     {
-        return View::render('admin/login');
+        return View::render('admin/login', [
+            'status' => self::render($view, $vars),
+            'title' => $title
+        ]);
     }
 
     public static function getPagination($request, $pagination)
