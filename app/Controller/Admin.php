@@ -10,9 +10,9 @@ class Admin extends View
 {
 
     private static $links = [
-        'home'  => ['label' => 'Painel',   'link' => URL . '/admin'],
-        'users' => ['label' => 'Usuários', 'link' => URL . '/admin/users'],
-        'posts' => ['label' => 'Posts',    'link' => URL . '/admin/posts']
+        'home'  => ['label' => 'Painel',   'link' => URL . '/admin', 'icon' => 'home'],
+        'users' => ['label' => 'Usuários', 'link' => URL . '/admin/users', 'icon' => 'users'],
+        'posts' => ['label' => 'Posts',    'link' => URL . '/admin/posts', 'icon' => 'file']
     ];
 
     public static function getAdminLogin($request, $message = null)
@@ -46,22 +46,20 @@ class Admin extends View
     public static function setAdminLogout($request)
     {
         Session::adminLogout();
-
         $request->getRouter()->redirect('/admin/login');
     }
 
     public static function getAdminPanel($title, $content, $current)
     {
         $links = '';
-
         foreach (self::$links as $hash => $item) {
             $links .= parent::render('admin/menu/link', [
                 'label' => $item['label'],
                 'link' => $item['link'],
+                'icon' => $item['icon'],
                 'current' => $hash == $current ? 'active' : '',
             ]);
         }
-
         return parent::pageAdmin('admin/dashboard', $title, ['links' => $links]);
     }
 }
