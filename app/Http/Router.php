@@ -50,7 +50,7 @@ class Router
 
         foreach ($this->routes as $patternRoute => $methods) {
             if (preg_match($patternRoute, $uri)) {
-                if ($methods[$httpMethod]) {
+                if (isset($methods[$httpMethod])) {
                     return $methods[$httpMethod];
                 }
                 throw new \Exception("Método não permitido", 405);                
@@ -62,6 +62,21 @@ class Router
     public function get($route, $params = [])
     {
         return $this->add('GET', $route, $params);        
+    }
+
+    public function post($route, $params = [])
+    {
+        return $this->add('POST', $route, $params);        
+    }
+    
+    public function put($route, $params = [])
+    {
+        return $this->add('PUT', $route, $params);        
+    }
+    
+    public function delete($route, $params = [])
+    {
+        return $this->add('DELETE', $route, $params);        
     }
 
     public function dispatch()
