@@ -9,8 +9,8 @@ class Database
 {
   private $table;
   private $connection;
-  private static $driver;
-  private static $path;
+  private static $driver = 'sqlite';
+  private static $path = '../database/database.sqlite';
 
   public static function config($path, $driver = 'sqlite')
   {
