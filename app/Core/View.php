@@ -47,4 +47,12 @@ class View
             'title' => $title
         ]);
     }
+
+    public static function getPagination($request, $pagination)
+    {
+        $pages = $pagination->getPages();
+        if (count($pages) <= 1) return '';
+        $links = '';
+        $url = $request->getRouter()->getCurrentUrl();
+    }
 }

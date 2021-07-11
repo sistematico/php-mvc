@@ -116,4 +116,9 @@ class Router
         }
     }
 
+    public function getCurrentUrl()
+    {
+        return $this->url . $this->getUri();
+    }
+
 }
