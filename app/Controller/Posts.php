@@ -12,7 +12,7 @@ class Posts extends View
         return Post::getPosts(null, 'id DESC');
     }
 
-    public static function getPost()
+    public static function getPost($request)
     {
         return parent::page('posts/new', 'Enviar post');
     }
