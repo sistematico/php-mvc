@@ -12,7 +12,7 @@ class Database
   private static $driver = 'sqlite';
   private static $path = '../database/database.sqlite';
 
-  public static function config($path, $driver = 'sqlite')
+  public static function config($path = '../../database/database.sqlite', $driver = 'sqlite')
   {
     self::$driver = $driver;
     self::$path = $path;
