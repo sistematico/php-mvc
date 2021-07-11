@@ -36,6 +36,29 @@ class Router
         $this->routes[$patternRoute][$method] = $params;  
     }
 
+    private function getUri()
+    {
+        $uri = $this->request->getUri();
+        $xUri = strlen($this->prefix) ? explode($this->prefix, $uri) : [$uri];
+        return end($xUri);
+    }
+
+    private function getRoute()
+    {
+        $uri = $this->getUri();
+        $httpMethod = $this->request->getHttpMethod();
+
+        foreach ($this->routes as $patternRoute => $methods) {
+            if (preg_match($patternRoute, $uri)) {
+                if ($methods[$httpMethod]) {
+                    return $methods[$httpMethod];
+                }
+                throw new \Exception("Método não permitido", 405);                
+            }
+        }
+        throw new \Exception("URL não encontrada", 404);
+    }
+
     public function get($route, $params = [])
     {
         return $this->add('GET', $route, $params);        
