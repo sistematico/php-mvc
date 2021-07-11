@@ -29,6 +29,8 @@ class Response
 
     public function sendResponse()
     {
+        $this->sendHeaders();
+        
         switch ($this->contentType) {
             case 'text/html':
                 echo $this->content;
