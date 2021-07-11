@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use \App\Core\View;
-use \App\Model\User as EntityUser;
 use \App\Core\Session;
+use \App\Model\User as EntityUser;
 
 class User extends View
 {
@@ -15,8 +15,8 @@ class User extends View
 
     public static function getAdminLogin($request, $message = null)
     {
-        $status = !is_null($message) ? $message : '';
-        return parent::adminLogin('admin/login', 'Login', ['status' => $status]);
+        $status = !is_null($message) ? ['status' => $message] : [];
+        return parent::adminLogin('admin/login', 'Login', $status);
     }
     
     public static function setAdminLogin($request)
