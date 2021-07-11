@@ -9,9 +9,9 @@ define('URL', 'https://localhost');
 
 $router = new Router(URL);
 
-echo '<pre>';
-print_r($router);
-echo '</pre>';
-exit;
+$router->get('/', [
+    function(){
+        return new Response(200, Pages::home())
+    }
+]);
 
-echo Pages::home();
