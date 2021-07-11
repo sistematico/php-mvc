@@ -19,11 +19,11 @@ class View
         return str_replace($keys, array_values($vars),self::content($view));
     }
 
-    protected static function main($title, $content)
+    protected static function main($view, $title, $vars = [])
     {
         return View::render('main', [
             'title' => $title,
-            'content' => $content
+            'content' => self::render($view, $vars)
         ]);
     }
 }

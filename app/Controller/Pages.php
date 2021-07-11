@@ -8,10 +8,8 @@ class Pages extends View
 {
     public static function home()
     {
-        $content = View::render('home', [
+        return parent::main('home', 'Home', [
             'name' => 'PHP MVC'
         ]);
-
-        return View::main('Inicio', $content);
     }
 }
