@@ -19,9 +19,6 @@ class Router
     private function setPrefix()
     {
         $parseUrl = parse_url($this->url);
-        echo '<pre>';
-        print_r($parseUrl);
-        echo '</pre>';
-        exit;
+        $this->prefix = $parseUrl['path'] ?? '';
     }
 }
