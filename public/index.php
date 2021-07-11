@@ -5,6 +5,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 use App\Http\Router;
 use App\Http\Response;
 use App\Controller\Pages;
+use App\Controller\Posts;
 use App\Core\View;
 
 define('SITENAME', 'PHP MVC');
@@ -26,13 +27,13 @@ $router->get('/', [
 
 $router->get('/posts', [
     function() {
-        return new Response(200, Pages::posts());
+        return new Response(200, Posts::getPosts());
     }
 ]);
 
 $router->post('/posts', [
     function() {
-        return new Response(200, Pages::posts());
+        return new Response(200, Posts::posts());
     }
 ]);
 
