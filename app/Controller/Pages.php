@@ -38,7 +38,9 @@ class Pages extends View
 
         $user = User::getUserByEmail($email);
         if (!$user instanceof User) {
-            return self::getAdminLogin($request);
+            return self::getAdminLogin($request, 'E-mail ou senha inválidos.');
         }
+
+
     }
 }
