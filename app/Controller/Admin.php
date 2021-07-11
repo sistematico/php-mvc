@@ -63,16 +63,6 @@ class Admin extends View
             ]);
         }
 
-        $currentMenu = parent::render('admin/menu/sidebar', [
-            'links' => $links
-        ]); 
-
-
-        $contentPanel = parent::render('admin/sidebar', [
-            'menu' => $currentMenu,
-            'content' => $content,
-        ]);
-
-        return parent::pageAdmin($title, $contentPanel);
+        return parent::pageAdmin('admin/dashboard', $title, ['links' => $links]);
     }
 }
