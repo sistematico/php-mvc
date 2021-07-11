@@ -6,6 +6,7 @@ use App\Http\Router;
 use App\Http\Response;
 use App\Controller\Pages;
 use App\Controller\Posts;
+use App\Controller\User;
 use App\Core\View;
 use App\Http\Middleware\Queue;
 
@@ -35,7 +36,7 @@ $router->get('/', [
 
 $router->get('/admin', [
     function($request) {
-        return new Response(200, Pages::getAdmin($request));
+        return new Response(200, User::getAdmin($request));
     }
 ]);
 
@@ -44,19 +45,19 @@ $router->get('/admin/login', [
         'admin-logout'
     ],
     function($request) {
-        return new Response(200, Pages::getAdminLogin($request));
+        return new Response(200, User::getAdminLogin($request));
     }
 ]);
 
 $router->post('/admin/login', [
     function($request) {
-        return new Response(200, Pages::setAdminLogin($request));
+        return new Response(200, User::setAdminLogin($request));
     }
 ]);
 
 $router->get('/admin/logout', [
     function($request) {
-        return new Response(200, Pages::setAdminLogout($request));
+        return new Response(200, User::setAdminLogout($request));
     }
 ]);
 
