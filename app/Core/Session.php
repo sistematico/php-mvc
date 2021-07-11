@@ -29,5 +29,6 @@ class Session
     public static function adminIsLogged()
     {
         self::init();
+        return isset($_SESSION['admin']['user']['id']);
     }
 }
