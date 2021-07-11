@@ -5,7 +5,9 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 use App\Http\Router;
 use App\Controller\Pages;
 
-$router = new Router('');
+define('URL', 'https://localhost');
+
+$router = new Router(URL);
 
 echo '<pre>';
 print_r($router);
