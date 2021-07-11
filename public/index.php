@@ -12,7 +12,8 @@ define('URL', 'https://localhost');
 
 View::init([
     'SITENAME'=>SITENAME,
-    'URL'=>URL
+    'URL'=>URL,
+    'YEAR'=> date('Y')
 ]);
 
 $router = new Router(URL);
