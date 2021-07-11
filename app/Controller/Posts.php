@@ -11,8 +11,12 @@ class Posts extends View
     private static function getPostItems($request)
     {
         $items = '';
+        $total = Post::getPosts(null, null, null, 'COUNT(*) as total')->fetchObject()->total;
 
-        $total = Post::getPosts(null, null, null, '*');
+        echo '<pre>';
+        print_r($total);
+        echo '</pre>';
+        exit;
 
         $results = Post::getPosts(null, 'id DESC');
 
