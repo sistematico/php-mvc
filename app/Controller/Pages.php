@@ -21,4 +21,9 @@ class Pages extends View
             'name' => 'PHP2 MVC'
         ]);
     }
+
+    public static function error()
+    {
+        return parent::page('error/404', 'Erro 404');
+    }
 }

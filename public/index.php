@@ -30,6 +30,12 @@ Queue::setDefault(['maintenance']);
 
 $router = new Router(URL);
 
+$router->get('/404', [
+    function($request) {
+        return new Response(200, Pages::error($request));
+    }
+]);
+
 $router->get('/', [
     function($request) {
         return new Response(200, Posts::getPosts($request));
