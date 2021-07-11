@@ -38,6 +38,16 @@ class View
         ]);
     }
 
+    protected static function pageAdmin($view, $title, $vars = [])
+    {
+        return View::render('admin/main', [
+            'header' => self::render('admin/header'),
+            'footer' => self::render('admin/footer'),
+            'content' => self::render($view, $vars),
+            'title' => $title
+        ]);
+    }
+
     protected static function adminLogin($view, $title, $vars = [])
     {
         return View::render($view, [
