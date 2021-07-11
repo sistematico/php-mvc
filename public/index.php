@@ -31,7 +31,7 @@ $router->get('/posts', [
     }
 ]);
 
-$router->post('/posts', [
+$router->post('/posts/new', [
     function($request) {
         return new Response(200, Posts::setPost($request));
     }
