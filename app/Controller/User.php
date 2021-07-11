@@ -10,7 +10,7 @@ class User extends View
 {
     public static function getAdmin()
     {
-        return parent::pageAdmin('admin/dashboard', 'Login');
+        return parent::pageAdmin('admin/dashboard', 'Painel de Admin');
     }
 
     public static function getAdminLogin($request, $message = null)
