@@ -23,5 +23,6 @@ class Session
             'fullname' => $user->fullname,
         ];
 
+        return true;
     }
 }
