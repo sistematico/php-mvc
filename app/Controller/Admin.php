@@ -77,10 +77,13 @@ class Admin extends View
         $contentPanel = parent::render('admin/sidebar', [
             'menu' => self::getAdminMenu($current)
         ]);
-        
 
-        return parent::render('admin/menu/box', [
-            'links' => $links
+        return parent::render('admin/main', [
+            'header' => self::render('admin/header'),
+            'sidebar' => self::render('admin/sidebar'),
+            'footer' => self::render('admin/footer'),
+            'content' => self::render('admin/dashboard', $vars),
+            'title' => $title
         ]);
     }
 }
