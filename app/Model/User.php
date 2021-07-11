@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Core\Database;
+use \App\Core\Database;
 
 class User
 {
