@@ -4,6 +4,14 @@ namespace App\Core;
 
 class View
 {
+
+    private static $vars = [];
+
+    public static function init($vars = [])
+    {
+        self::$vars = $vars;
+    }
+
     private static function content($view)
     {
         $file = dirname(__DIR__) . "/view/{$view}.html";
@@ -12,6 +20,8 @@ class View
 
     protected static function render($view, $vars = [])
     {
+        $vars = array_merge(self::$vars, $vars);
+
         $keys = array_map(function($item){
             return '{{' . $item . '}}'; 
         },array_keys($vars));
