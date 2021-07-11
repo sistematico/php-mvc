@@ -54,6 +54,12 @@ $router->post('/admin/login', [
     }
 ]);
 
+$router->get('/admin/logout', [
+    function($request) {
+        return new Response(200, Pages::setAdminLogout($request));
+    }
+]);
+
 $router->get('/posts/new', [
     function($request) {
         return new Response(200, Posts::getPost($request));
