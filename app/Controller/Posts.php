@@ -12,6 +12,11 @@ class Posts extends View
         return parent::page('posts', 'Posts');
     }
 
+    public static function getPost()
+    {
+        return parent::page('posts/new', 'Enviar post');
+    }
+
     public static function insertPost($request)
     {
         $postVars = $request->getPostVars();
