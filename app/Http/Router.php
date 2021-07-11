@@ -33,18 +33,21 @@ class Router
         }
 
         $patternRoute = '/^' . str_replace('/', '\/', $route) . '$/';
-
-        $this->routes[$patternRoute][$method] = $params;
-
-        echo '<pre>';
-        print_r($this);
-        echo '</pre>';
-        exit;
+        $this->routes[$patternRoute][$method] = $params;  
     }
 
     public function get($route, $params = [])
     {
         return $this->add('GET', $route, $params);        
+    }
+
+    public function dispatch()
+    {
+        try {
+            throw new \Exception("Página não encontrada", 404);            
+        } catch (\Exception $e) {
+            return new Response($e->getCode(), $e->getMessage());            
+        }
     }
 
 }
