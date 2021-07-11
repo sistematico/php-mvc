@@ -19,6 +19,12 @@ $router->get('/', [
     }
 ]);
 
+$router->get('/pagina/{id}', [
+    function($id) {
+        return new Response(200, 'Página 10');
+    }
+]);
+
 $router
     ->dispatch()
     ->sendResponse();
