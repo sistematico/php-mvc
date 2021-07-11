@@ -72,7 +72,7 @@ class Admin extends View
         ]);
     }
 
-    private static function getAdminPanel($title, $content, $current)
+    public static function getAdminPanel($title, $content, $current)
     {       
         $contentPanel = parent::render('admin/sidebar', [
             'menu' => self::getAdminMenu($current)

@@ -42,7 +42,8 @@ $router->get('/admin', [
     ],
     function($request) {
         //return new Response(200, User::getAdmin($request));
-        return new Response(200, Admin::getAdminPanel());
+        // getAdminPanel($title, $content, $current)
+        return new Response(200, Admin::getAdminPanel('Admin', $content, 'home'));
     }
 ]);
 
