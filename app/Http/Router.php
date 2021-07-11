@@ -37,7 +37,7 @@ class Router
 
         if (preg_match_all($patternVariable, $route, $matches)) {
             $route = preg_replace($patternVariable, '(.*?)', $route);
-            $params['variables'] = $matches[1];
+            $params['variables'] = $matches[1] ?? '';
         }
 
         $patternRoute = '/^' . str_replace('/', '\/', $route) . '$/';
@@ -58,8 +58,9 @@ class Router
         $httpMethod = $this->request->getHttpMethod();
 
         foreach ($this->routes as $patternRoute => $methods) {
-            if (preg_match($patternRoute, $uri)) {
+            if (preg_match($patternRoute, $uri, $matches)) {
                 if (isset($methods[$httpMethod])) {
+                    unset($matches[0]);
                     return $methods[$httpMethod];
                 }
                 throw new \Exception("Método não permitido", 405);                
