@@ -42,6 +42,7 @@ class View
     {
         return self::render('admin/main', [
             'header' => self::render('admin/header'),
+            'sidebar' => self::render('admin/sidebar'),
             'footer' => self::render('admin/footer'),
             'content' => self::render($view, $vars),
             'title' => $title
