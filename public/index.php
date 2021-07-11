@@ -6,6 +6,7 @@ use App\Http\Router;
 use App\Http\Response;
 use App\Controller\Pages;
 use App\Controller\Posts;
+use App\Controller\Admin;
 use App\Controller\User;
 use App\Core\View;
 use App\Http\Middleware\Queue;
@@ -40,7 +41,8 @@ $router->get('/admin', [
         'admin-login'
     ],
     function($request) {
-        return new Response(200, User::getAdmin($request));
+        //return new Response(200, User::getAdmin($request));
+        return new Response(200, Admin::getAdminPanel());
     }
 ]);
 
