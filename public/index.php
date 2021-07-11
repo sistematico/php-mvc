@@ -21,19 +21,20 @@ $router = new Router(URL);
 
 $router->get('/', [
     function() {
-        return new Response(200, Pages::home());
+        //return new Response(200, Pages::home());
+        return new Response(200, Posts::getPosts());
     }
 ]);
 
 $router->get('/posts', [
     function() {
-        return new Response(200, Posts::getPosts());
+        return new Response(200, Posts::getPost());
     }
 ]);
 
 $router->post('/posts', [
-    function() {
-        return new Response(200, Posts::posts());
+    function($request) {
+        return new Response(200, Posts::setPost());
     }
 ]);
 
