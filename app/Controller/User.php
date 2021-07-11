@@ -3,25 +3,11 @@
 namespace App\Controller;
 
 use \App\Core\View;
-use \App\Model\User;
+use \App\Model\User as EntityUser;
 use \App\Core\Session;
 
-class Pages extends View
+class User extends View
 {
-    public static function home()
-    {
-        return parent::page('posts', 'Home', [
-            'name' => 'PHP2 MVC'
-        ]);
-    }
-
-    public static function posts()
-    {
-        return parent::page('posts', 'Posts', [
-            'name' => 'PHP2 MVC'
-        ]);
-    }
-
     public static function getAdminLogin($request, $message = null)
     {
         $status = !is_null($message) ? $message : '';
@@ -34,8 +20,8 @@ class Pages extends View
         $email = $postVars['email'];
         $password = $postVars['password'];
 
-        $user = User::getUserByEmail($email);
-        if (!$user instanceof User OR !password_verify($password, $user->password)) {
+        $user = EntityUser::getUserByEmail($email);
+        if (!$user instanceof EntityUser OR !password_verify($password, $user->password)) {
             return self::getAdminLogin($request, 'E-mail ou senha inválidos.');
         }
 
