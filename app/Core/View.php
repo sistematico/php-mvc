@@ -30,10 +30,20 @@ class View
 
     protected static function page($view, $title, $vars = [])
     {
-        return View::render($view . '/main', [
-            'header' => self::render($view . '/header'),
-            'footer' => self::render($view . '/footer'),
-            'content' => self::render($view . '/content', $vars),
+        return View::render('main', [
+            'header' => self::render('header'),
+            'footer' => self::render('footer'),
+            'content' => self::render($view, $vars),
+            'title' => $title
+        ]);
+    }
+
+    protected static function pageAdmin($view, $title, $vars = [])
+    {
+        return View::render('admin/main', [
+            'header' => self::render('admin/header'),
+            'footer' => self::render('admin/footer'),
+            'content' => self::render($view, $vars),
             'title' => $title
         ]);
     }
