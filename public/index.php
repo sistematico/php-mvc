@@ -32,11 +32,11 @@ $router->get('/', [
     }
 ]);
 
-$router->get('/admin', [
-    function($request) {
-        return new Response(200, Pages::getAdmin($request));
-    }
-]);
+// $router->get('/admin', [
+//     function($request) {
+//         return new Response(200, Pages::getAdmin($request));
+//     }
+// ]);
 
 $router->get('/admin/login', [
     function($request) {
