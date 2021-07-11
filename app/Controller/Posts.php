@@ -4,13 +4,17 @@ namespace App\Controller;
 
 use \App\Model\Post;
 use \App\Core\View;
+use \App\Core\Pagination;
 
 class Posts extends View
 {
     private static function getPostItems($request)
     {
         $items = '';
-        $results = Post::getPosts();
+
+        $total = Post::getPosts(null, null, null, '*');
+
+        $results = Post::getPosts(null, 'id DESC');
 
         while ($row = $results->fetchObject(Post::class)) {
             $items .= parent::render('posts/post',[
