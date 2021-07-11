@@ -2,8 +2,6 @@
 
 namespace App\Http;
 
-use \Closure;
-
 class Router
 {
     private $url = '';
@@ -26,18 +24,24 @@ class Router
 
     private function add($method, $route, $params = [])
     {
+        foreach ($params as $key => $value) {
+            if ($value instanceof \Closure) {
+                $params['controller'] = $value;
+                unset($params[$key]);
+                continue;
+            }
+        }
+
+        $patternRoute = '/^' . str_replace('/', '\/', $route) . '';
+
         echo '<pre>';
-        print_r($method);
+        print_r($patternRoute);
         echo '</pre>';
-        echo '<pre>';
-        print_r($route);
-        echo '</pre>';
+
         echo '<pre>';
         print_r($params);
         echo '</pre>';
-
         exit;
-
     }
 
     public function get($route, $params = [])
