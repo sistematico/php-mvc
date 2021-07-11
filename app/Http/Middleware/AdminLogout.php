@@ -9,10 +9,8 @@ class AdminLogout
     public function handle($request, $next)
     {
         if (Session::adminIsLogged()) {
-            die('Está logado');    
+            $request->getRouter()->redirect('/admin');
         }
-
-        die('Não está logado');    
-
+        return $next($request);
     }
 }
