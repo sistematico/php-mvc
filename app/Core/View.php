@@ -28,13 +28,13 @@ class View
         return str_replace($keys, array_values($vars),self::content($view));
     }
 
-    protected static function page($dir, $view, $title, $vars = [])
+    protected static function page($view, $title, $vars = [])
     {
-        return View::render($dir . '/main', [
-            'header' => self::render($dir . '/header'),
-            'footer' => self::render($dir . '/footer'),
+        return View::render($view . '/main', [
+            'header' => self::render($view . '/header'),
+            'footer' => self::render($view . '/footer'),
             'title' => $title,
-            'content' => self::render($dir . '/' . $view, $vars)
+            'content' => self::render($view . '/' . $view, $vars)
         ]);
     }
 }

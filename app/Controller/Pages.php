@@ -8,14 +8,14 @@ class Pages extends View
 {
     public static function home()
     {
-        return parent::page('main', 'home', 'Home', [
+        return parent::page('main', 'Home', [
             'name' => 'PHP2 MVC'
         ]);
     }
 
     public static function posts()
     {
-        return parent::page('posts', 'posts', 'Posts', [
+        return parent::page('posts', 'Posts', [
             'name' => 'PHP2 MVC'
         ]);
     }
