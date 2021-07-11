@@ -7,7 +7,7 @@ use \App\Core\View;
 
 class Posts extends View
 {
-    private static function getPostItems()
+    private static function getPostItems($request)
     {
         $items = '';
         $results = Post::getPosts();
@@ -24,10 +24,10 @@ class Posts extends View
         return $items;
     }
 
-    public static function getPosts()
+    public static function getPosts($request)
     {
         return parent::page('posts', 'Posts', [
-            'items' => self::getPostItems()
+            'items' => self::getPostItems($request)
         ]);
     }
 
@@ -46,6 +46,6 @@ class Posts extends View
         $post->picture = $postVars['picture'];
         $post->create();
 
-        return self::getPosts();
+        return self::getPosts($request);
     }
 }

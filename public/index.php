@@ -20,9 +20,8 @@ View::init([
 $router = new Router(URL);
 
 $router->get('/', [
-    function() {
-        //return new Response(200, Pages::home());
-        return new Response(200, Posts::getPosts());
+    function($request) {
+        return new Response(200, Posts::getPosts($request));
     }
 ]);
 
