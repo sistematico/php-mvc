@@ -30,7 +30,7 @@ class View
 
     protected static function page($view, $title, $vars = [])
     {
-        return View::render('main', [
+        return self::render('main', [
             'header' => self::render('header'),
             'footer' => self::render('footer'),
             'content' => self::render($view, $vars),
@@ -40,18 +40,10 @@ class View
 
     protected static function pageAdmin($view, $title, $vars = [])
     {
-        return View::render('admin/main', [
+        return self::render('admin/main', [
             'header' => self::render('admin/header'),
             'footer' => self::render('admin/footer'),
             'content' => self::render($view, $vars),
-            'title' => $title
-        ]);
-    }
-
-    protected static function adminLogin($view, $title, $vars = [])
-    {
-        return View::render($view, [
-            'status' => self::render('admin/status', $vars),
             'title' => $title
         ]);
     }
@@ -70,12 +62,12 @@ class View
             $queryParams['pagina'] = $page['page'];
             $link = $url . '?' . http_build_query($queryParams);
 
-            $links .= View::render('pagination/link', [
+            $links .= self::render('pagination/link', [
                 'page' => $page['page'],
                 'link' => $link
             ]);
         }
 
-        return View::render('pagination/box', ['links' => $links]);
+        return self::render('pagination/box', ['links' => $links]);
     }
 }
