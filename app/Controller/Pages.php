@@ -41,6 +41,6 @@ class Pages extends View
 
         Session::adminLogin($user);
 
-        $request->getRouter()->redirect('/');
+        $request->getRouter()->redirect('/admin');
     }
 }

@@ -125,6 +125,7 @@ class Router
     public function redirect($route)
     {
         $url = $this->url . $route;
+        header('Location:' . $url);
     }
 
 }
