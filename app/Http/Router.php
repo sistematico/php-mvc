@@ -73,7 +73,9 @@ class Router
             }
         }
         //throw new \Exception("URL não encontrada", 404);
+        //header('Location:' . $this->url . '/404');
         $this->redirect('/404');
+        exit;
     }
 
     public function get($route, $params = [])
