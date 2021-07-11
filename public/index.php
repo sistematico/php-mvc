@@ -25,7 +25,7 @@ $router->get('/', [
     }
 ]);
 
-$router->get('/posts', [
+$router->get('/posts/new', [
     function($request) {
         return new Response(200, Posts::getPost($request));
     }
