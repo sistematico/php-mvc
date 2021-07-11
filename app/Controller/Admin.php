@@ -52,7 +52,6 @@ class Admin extends View
 
     public static function getAdminPanel($title, $content, $current)
     {
-
         $links = '';
 
         foreach (self::$links as $hash => $item) {
