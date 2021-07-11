@@ -40,5 +40,7 @@ class Pages extends View
         }
 
         Session::adminLogin($user);
+
+        $request->getRouter()->redirect('/');
     }
 }

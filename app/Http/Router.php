@@ -122,4 +122,9 @@ class Router
         return $this->url . $this->getUri();
     }
 
+    public function redirect($route)
+    {
+        $url = $this->url . $route;
+    }
+
 }
