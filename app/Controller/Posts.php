@@ -10,7 +10,6 @@ class Posts extends View
     private static function getPostItems()
     {
         $items = '';
-
         $results = Post::getPosts();
 
         while ($row = $results->fetchObject(Post::class)) {
