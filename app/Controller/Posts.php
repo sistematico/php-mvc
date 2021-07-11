@@ -16,7 +16,9 @@ class Posts extends View
         while ($row = $results->fetchObject(Post::class)) {
             $items .= parent::render('posts/post',[
                 'title' => $row->title,
-                'description' => $row->description
+                'description' => $row->description,
+                'date' => $row->date,
+                'likes' => $row->likes
             ]);
         }
 
@@ -25,7 +27,6 @@ class Posts extends View
 
     public static function getPosts()
     {
-        //return Post::getPosts(null, 'id DESC');
         return parent::page('posts', 'Posts', [
             'items' => self::getPostItems()
         ]);
