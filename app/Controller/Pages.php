@@ -9,7 +9,7 @@ class Pages extends View
     public static function home()
     {
         return parent::main('home', 'Home', [
-            'name' => 'PHP MVC'
+            'name' => 'PHP2 MVC'
         ]);
     }
 }
