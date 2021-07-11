@@ -13,6 +13,10 @@ class View
     public static function render($view, $vars = [])
     {
         $content = self::content($view);
+        $keys = array_keys($vars);
+        $keys = array_map(function($item){
+            return '{{' . $item . '}}'; 
+        },$keys);
         return $content;
     }
 }
