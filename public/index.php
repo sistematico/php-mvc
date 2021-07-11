@@ -19,10 +19,17 @@ $router->get('/', [
     }
 ]);
 
-$router->get('/pagina/{id}/{acao}', [
-    function($id, $acao) {
-        return new Response(200, 'Página: ' . $id . ' - Ação: '. $acao);
+$router->get('/posts', [
+    function() {
+        return new Response(200, Pages::posts());
     }
 ]);
+
+$router->post('/posts', [
+    function() {
+        return new Response(200, Pages::posts());
+    }
+]);
+
 
 $router->dispatch()->sendResponse();
