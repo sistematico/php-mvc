@@ -15,11 +15,6 @@ class Admin extends View
         'posts' => ['label' => 'Posts',    'link' => URL . '/admin/posts']
     ];
 
-    public static function getAdmin()
-    {
-        return parent::pageAdmin('admin/dashboard', 'Painel de Admin');
-    }
-
     public static function getAdminLogin($request, $message = null)
     {
         $alert =  !is_null($message) ? parent::render('admin/alert', ['status' => $message]) : '';
