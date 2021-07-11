@@ -16,7 +16,14 @@ class User extends View
     public static function getAdminLogin($request, $message = null)
     {
         $status = !is_null($message) ? $message : '';
-        return parent::adminLogin('admin/login', 'Login', ['status' => $status]);
+        $alert =  parent::render('admin/alert', ['status' => $status]);
+        
+        return parent::render('admin/login', [
+            'alert' => $alert,
+            'title' => 'Admin Login'
+        ]);
+
+        return parent::render('admin/login', 'Login');
     }
     
     public static function setAdminLogin($request)
