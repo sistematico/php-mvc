@@ -71,4 +71,21 @@ class Admin extends View
             'links' => $links
         ]);
     }
+
+    private static function getAdminPanel($title, $content, $current)
+    {
+        $links = '';
+
+        foreach (self::$links as $hash => $item) {
+            $links .= parent::render('admin/menu/link', [
+                'label' => $item['label'],
+                'link' => $item['link'],
+                'current' => $hash == $current ? 'active' : '',
+            ]);
+        }
+
+        return parent::render('admin/menu/box', [
+            'links' => $links
+        ]);
+    }
 }
