@@ -10,6 +10,7 @@ class Post
     public $title;
     public $description;
     public $picture;
+    public $likes;
     public $date;
 
     public function create()
@@ -17,7 +18,8 @@ class Post
         $this->id = (new Database('posts'))->insert([
             'title' => $this->title,
             'description' => $this->description,
-            'picture' => $this->picture
+            'picture' => $this->picture,
+            'likes' => 0
         ]);
 
         return true;
