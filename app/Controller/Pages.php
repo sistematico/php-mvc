@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use \App\Core\View;
 use \App\Model\User;
+use \App\Core\Session;
 
 class Pages extends View
 {
@@ -37,5 +38,7 @@ class Pages extends View
         if (!$user instanceof User OR !password_verify($password, $user->password)) {
             return self::getAdminLogin($request, 'E-mail ou senha inválidos.');
         }
+
+        Session::adminLogin($user);
     }
 }
