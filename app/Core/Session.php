@@ -25,4 +25,9 @@ class Session
 
         return true;
     }
+
+    public static function adminIsLogged()
+    {
+        self::init();
+    }
 }
