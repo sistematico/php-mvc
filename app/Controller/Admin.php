@@ -67,7 +67,7 @@ class Admin extends View
             ]);
         }
 
-        return parent::render('admin/menu/box', [
+        return parent::render('admin/menu/sidebar', [
             'links' => $links
         ]);
     }
