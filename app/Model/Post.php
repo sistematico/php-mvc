@@ -24,4 +24,9 @@ class Post
 
         return true;
     }
+
+    public function getPosts($where = null, $order = null, $limit = null, $fields = '*')
+    {
+        return (new Database('posts'))->select($where, $order, $limit, $fields);
+    }
 }
