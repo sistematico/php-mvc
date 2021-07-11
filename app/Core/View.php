@@ -51,8 +51,16 @@ class View
     public static function getPagination($request, $pagination)
     {
         $pages = $pagination->getPages();
+
         if (count($pages) <= 1) return '';
-        $links = '';
+        
+        $link = '';
         $url = $request->getRouter()->getCurrentUrl();
+        $queryParams = $request->getQueryParams();
+
+        foreach ($pages as $page) {
+            $queryParams['pagina'] = $page['pagina'];
+            $link .= $url . '?' . http_build_query($queryParams);
+        }
     }
 }
