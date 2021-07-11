@@ -33,8 +33,8 @@ class View
         return View::render($view . '/main', [
             'header' => self::render($view . '/header'),
             'footer' => self::render($view . '/footer'),
-            'title' => $title,
-            'content' => self::render($view . '/' . $view, $vars)
+            'content' => self::render($view . '/content', $vars),
+            'title' => $title
         ]);
     }
 }
