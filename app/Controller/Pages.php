@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use \App\Core\View;
 
-class Pages
+class Pages extends View
 {
     public static function home()
     {
