@@ -7,9 +7,13 @@ use App\Http\Response;
 use App\Controller\Pages;
 use App\Core\View;
 
+define('SITENAME', 'PHP MVC');
 define('URL', 'https://localhost');
 
-View::init(['URL'=>URL]);
+View::init([
+    'SITENAME'=>SITENAME,
+    'URL'=>URL
+]);
 
 $router = new Router(URL);
 
