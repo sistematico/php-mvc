@@ -10,7 +10,7 @@ define('URL', 'https://localhost');
 
 $router = new Router(URL);
 
-$router->post('/', [
+$router->get('/', [
     function() {
         return new Response(200, Pages::home());
     }
