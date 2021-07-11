@@ -15,6 +15,10 @@ class User
 
     public static function getUserByEmail($email)
     {
+        echo '<pre>';
+        print_r($this);
+        echo '</pre>';
+        exit;
         return (new Database('users'))->select('email = "' . $email . '"')->fetchObject(self::class);
     }
 

@@ -35,12 +35,6 @@ class Pages extends View
         $password = $postVars['password'];
 
         $user = User::getUserByEmail($email);
-
-        echo '<pre>';
-        print_r($user);
-        echo '</pre>';
-        exit;
-
         if (!$user instanceof User OR !password_verify($password, $user->password)) {
             return self::getAdminLogin($request, 'E-mail ou senha inválidos.');
         }
