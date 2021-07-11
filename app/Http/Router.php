@@ -104,6 +104,12 @@ class Router
 
             $args = [];
 
+            $reflection = new \ReflectionFunction($route['controller']);
+            foreach ($reflection->getParameters() as $parameter) {
+                $name = $parameter->getName();
+                $args[$name] = $route['variables'][$name] ?? '';
+            }
+
             return call_user_func_array($route['controller'], $args);
         } catch (\Exception $e) {
             return new Response($e->getCode(), $e->getMessage());            
