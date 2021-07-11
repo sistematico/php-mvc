@@ -16,7 +16,7 @@ jobs:
         script: |
           git clone git@github.com:sistematico/php-mvc.git /var/www/mvc.lucasbrum.net
           cd /var/www/mvc.lucasbrum.net
-          git checkout HEAD^ db/database.sqlite
+          git checkout HEAD^ database/database.sqlite
           git pull
           composer install
           composer dump-autoload -o
