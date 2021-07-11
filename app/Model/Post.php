@@ -7,7 +7,7 @@ use App\Core\Database;
 class Post
 {
     public $id;
-    public $name;
+    public $title;
     public $description;
     public $picture;
     public $date;
