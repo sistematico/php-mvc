@@ -6,11 +6,9 @@ use \App\Core\View;
 
 class Posts extends View
 {
-    public static function home()
+    public static function getPosts()
     {
-        return parent::page('posts', 'Home', [
-            'name' => 'PHP2 MVC'
-        ]);
+        return parent::page('posts', 'Posts');
     }
 
     public static function posts()
