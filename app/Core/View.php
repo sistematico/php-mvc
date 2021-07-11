@@ -51,7 +51,7 @@ class View
     protected static function adminLogin($view, $title, $vars = [])
     {
         return View::render('admin/login', [
-            'status' => self::render($view, $vars),
+            'status' => self::render('admin/alert', $vars),
             'title' => $title
         ]);
     }

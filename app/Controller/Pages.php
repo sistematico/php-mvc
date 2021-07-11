@@ -23,9 +23,7 @@ class Pages extends View
 
     public static function getAdminLogin($request, $message = null)
     {
-        $status = !is_null($message) ? parent::render('admin/status',[
-            'status' => $message
-        ]) : '';
+        $status = !is_null($message) ? $message : '';
 
         return parent::adminLogin('admin/login', 'Login', ['status' => $status]);
     }
