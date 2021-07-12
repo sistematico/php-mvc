@@ -15,7 +15,7 @@ class Admin extends View
         'posts' => ['label' => 'Posts',    'link' => URL . '/admin/posts', 'icon' => 'file']
     ];
 
-    public static function getAdminLogin($request, $message = null)
+    public static function getLogin($request, $message = null)
     {
         $alert =  !is_null($message) ? parent::render('admin/alert', ['status' => $message]) : '';
         
@@ -27,7 +27,7 @@ class Admin extends View
         return parent::render('admin/login', 'Login');
     }
     
-    public static function setAdminLogin($request)
+    public static function setLogin($request)
     {
         $postVars = $request->getPostVars();
         $email = $postVars['email'];
@@ -35,7 +35,7 @@ class Admin extends View
 
         $user = User::getUserByEmail($email);
         if (!$user instanceof User OR !password_verify($password, $user->password)) {
-            return self::getAdminLogin($request, 'E-mail ou senha inválidos.');
+            return self::getLogin($request, 'E-mail ou senha inválidos.');
         }
 
         Session::adminLogin($user);
@@ -43,13 +43,13 @@ class Admin extends View
         $request->getRouter()->redirect('/admin');
     }
 
-    public static function setAdminLogout($request)
+    public static function setLogout($request)
     {
         Session::adminLogout();
         $request->getRouter()->redirect('/admin/login');
     }
 
-    public static function getAdminPanel($title, $content, $current)
+    public static function getPanel($title, $content, $current)
     {
         $links = '';
         foreach (self::$links as $hash => $item) {
@@ -60,16 +60,26 @@ class Admin extends View
                 'current' => $hash == $current ? 'active' : '',
             ]);
         }
-        return parent::pageAdmin('admin/dashboard', $title, ['links' => $links]);
+        return self::page('admin/dashboard', $title, ['links' => $links]);
     }
 
     // Posts
     public static function getPosts($request)
     {
         $posts = Posts::getPosts($request);
-        return parent::page('posts', 'Posts', [
+        return self::page('posts', 'Posts', [
             'items' => $posts['items'],
             'pagination' => $posts['pagination']
+        ]);
+    }
+
+    protected static function page($view, $title, $vars = [])
+    {
+        return parent::render('admin/main', [
+            'header' => parent::render('admin/header'),
+            'footer' => parent::render('admin/footer'),
+            'content' => parent::render($view, $vars),
+            'title' => $title
         ]);
     }
 }

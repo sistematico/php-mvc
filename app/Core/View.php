@@ -38,16 +38,6 @@ class View
         ]);
     }
 
-    protected static function pageAdmin($view, $title, $vars = [])
-    {
-        return self::render('admin/main', [
-            'header' => self::render('admin/header'),
-            'footer' => self::render('admin/footer'),
-            'content' => self::render($view, $vars),
-            'title' => $title
-        ]);
-    }
-
     public static function getPagination($request, $pagination)
     {
         $pages = $pagination->getPages();
