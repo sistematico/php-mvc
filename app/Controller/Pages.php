@@ -22,7 +22,12 @@ class Pages extends View
         ]);
     }
 
-    public static function error()
+    public static function notAllowed()
+    {
+        return parent::getPage('error/405', 'Erro 405');
+    }
+
+    public static function notFound()
     {
         return parent::getPage('error/404', 'Erro 404');
     }
