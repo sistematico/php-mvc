@@ -27,20 +27,20 @@ $router->get('/admin/logout', [
 $router->get('/admin', [
     'middlewares' => ['admin-login'],
     function($request) {
-        return new Response(200, Controller\Admin::getAdminPanel($request));
+        return new Response(200, Controller\Admin::getAdminPanel('Admin', '', 'home'));
     }
 ]);
 
 $router->get('/admin/posts', [
     'middlewares' => ['admin-login'],
     function($request) {
-        return new Response(200, Controller\Admin::getPosts($request));
+        return new Response(200, Controller\Admin::getAdminPanel('Admin - Posts', '', 'posts'));
     }
 ]);
 
 $router->get('/admin/users', [
     'middlewares' => ['admin-login'],
     function($request) {
-        return new Response(200, Controller\Admin::getPanel('Admin', '', 'users'));
+        return new Response(200, Controller\Admin::getAdminPanel('Admin - Users', '', 'users'));
     }
 ]);
