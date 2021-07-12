@@ -12,7 +12,6 @@ class AdminPage extends View
         'posts' => ['label' => 'Posts',    'link' => URL . '/admin/posts', 'icon' => 'file']
     ];
 
-    // 3
     private static function getAdminMenu($current)
     {
         $links = '';
@@ -29,7 +28,6 @@ class AdminPage extends View
         ]);
     }
 
-    // 4
     public static function getAdminPage($title, $content)
     {
         return View::render('admin/page',[
@@ -40,7 +38,6 @@ class AdminPage extends View
         ]);
     }
 
-    // 2
     public static function getAdminPanel($title, $content, $current)
     {
         $contentPanel = View::render('admin/panel', [
@@ -50,5 +47,4 @@ class AdminPage extends View
 
         return self::getAdminPage($title, $contentPanel);
     }
-
 }
