@@ -47,7 +47,11 @@ class Posts extends Page
 
     public static function getNewPost($request)
     {
-        $content = View::render('admin/posts/form');
+        $content = View::render('admin/posts/form',[
+            'title' => '',
+            'description' => ''
+        ]);
+
         return parent::getAdminPanel('Cadastrar Post', $content, 'posts');
     }
 
