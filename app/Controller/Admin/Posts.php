@@ -64,4 +64,15 @@ class Posts extends Page
 
         $request->getRouter()->redirect('/admin/posts/' . $post->id . '/edit?status=created');
     }
+
+    public static function getEditPost($request, $id)
+    {
+        $post = Post::getPostById($id);
+
+        $content = View::render('admin/posts/form', [
+            'title' => 'Editar Post'
+        ]);
+
+        return parent::getAdminPanel('Editar Post', $content, 'posts');
+    }
 }
