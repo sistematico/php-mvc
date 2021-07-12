@@ -119,11 +119,6 @@ class Posts extends View
             $request->getRouter()->redirect('/posts');
         }
 
-        echo '<pre>';
-        print_r($post);
-        echo '</pre>';
-        exit;
-
         $content = parent::render('posts/form');
         return parent::page('posts/form', 'Enviar post');
     }
