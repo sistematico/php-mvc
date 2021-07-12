@@ -59,3 +59,10 @@ $router->post('/admin/posts/new', [
         return new Response(200, Posts::setNewPost($request));
     }
 ]);
+
+$router->get('/admin/posts/{id}/edit', [
+    'middlewares' => ['admin-login'],
+    function($request, $id) {
+        return new Response(200, Posts::getEditPost($request, $id));
+    }
+]);
