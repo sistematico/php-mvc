@@ -8,24 +8,17 @@ use \App\Model\User as EntityUser;
 
 class User extends View
 {
-    public static function getAdmin()
-    {
-        return parent::pageAdmin('admin/dashboard', 'Painel de Admin');
-    }
-
-    public static function getAdminLogin($request, $message = null)
+    public static function getUserLogin($request, $message = null)
     {
         $alert =  !is_null($message) ? parent::render('admin/alert', ['status' => $message]) : '';
-        
-        return parent::render('admin/login', [
-            'alert' => $alert,
-            'title' => 'Admin Login'
-        ]);
 
-        return parent::render('admin/login', 'Login');
+        return parent::render('login', [
+            'alert' => $alert,
+            'title' => 'Login do Usuário'
+        ]);
     }
     
-    public static function setAdminLogin($request)
+    public static function setUserLogin($request)
     {
         $postVars = $request->getPostVars();
         $email = $postVars['email'];
@@ -33,18 +26,18 @@ class User extends View
 
         $user = EntityUser::getUserByEmail($email);
         if (!$user instanceof EntityUser OR !password_verify($password, $user->password)) {
-            return self::getAdminLogin($request, 'E-mail ou senha inválidos.');
+            return self::getUserLogin($request, 'E-mail ou senha inválidos.');
         }
 
-        Session::adminLogin($user);
+        Session::UserLogin($user);
 
-        $request->getRouter()->redirect('/admin');
+        $request->getRouter()->redirect('/');
     }
 
-    public static function setAdminLogout($request)
+    public static function setUserLogout($request)
     {
-        Session::adminLogout();
+        Session::UserLogout();
 
-        $request->getRouter()->redirect('/admin/login');
+        $request->getRouter()->redirect('/user/login');
     }
 }
