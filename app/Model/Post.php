@@ -7,6 +7,7 @@ use App\Core\Database;
 class Post
 {
     public $id;
+    public $author;
     public $title;
     public $description;
     public $picture;
@@ -16,6 +17,7 @@ class Post
     public function create()
     {
         $this->id = (new Database('posts'))->insert([
+            'author_id' => $this->author,
             'title' => $this->title,
             'description' => $this->description,
             'picture' => $this->picture,
