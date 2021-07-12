@@ -7,7 +7,7 @@ class Database
   private $table;
   private $connection;
   private static $driver    = 'sqlite';
-  private static $path      = '../database/database.sqlite';
+  private static $path      = DATABASE;
 
   public function __construct($table = null)
   {
