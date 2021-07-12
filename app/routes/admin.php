@@ -5,6 +5,13 @@ use App\Controller\Admin\Admin;
 use App\Controller\Admin\Posts;
 use App\Controller\Admin\Users;
 
+$router->get('/admin', [
+    'middlewares' => ['admin-login'],
+    function($request) {
+        return new Response(200, Admin::getAdminPanel('Admin', '', 'home'));
+    }
+]);
+
 $router->get('/admin/login', [
     'middlewares' => ['admin-logout'],
     function($request) {
@@ -26,13 +33,8 @@ $router->get('/admin/logout', [
     }
 ]);
 
-$router->get('/admin', [
-    'middlewares' => ['admin-login'],
-    function($request) {
-        return new Response(200, Admin::getAdminPanel('Admin', '', 'home'));
-    }
-]);
 
+// Admin Users
 $router->get('/admin/users', [
     'middlewares' => ['admin-login'],
     function($request) {
@@ -40,6 +42,7 @@ $router->get('/admin/users', [
     }
 ]);
 
+// Admin Posts
 $router->get('/admin/posts', [
     'middlewares' => ['admin-login'],
     function($request) {
