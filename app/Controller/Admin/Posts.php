@@ -25,6 +25,7 @@ class Posts extends Page
         while ($row = $results->fetchObject(Post::class)) {
             // $items .= parent::render('posts/post',[
             $items .= parent::render('admin/components/table',[
+                'id' => $row->id,
                 'title' => $row->title,
                 'description' => $row->description,
                 'image' => $row->image,
