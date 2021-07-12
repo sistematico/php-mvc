@@ -6,6 +6,7 @@ use \App\Core\View;
 use \App\Core\Session;
 use \App\Model\User;
 use \App\Model\Post;
+use \App\Controller\Posts;
 
 class Admin extends View
 {
