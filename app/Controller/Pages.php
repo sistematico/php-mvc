@@ -22,13 +22,8 @@ class Pages extends View
         ]);
     }
 
-    public static function notAllowed()
+    public static function error($title, $message = [])
     {
-        return parent::getPage('error/405', 'Erro 405');
-    }
-
-    public static function notFound()
-    {
-        return parent::getPage('error/404', 'Erro 404');
+        return parent::getPage('error', $title, $message);
     }
 }
