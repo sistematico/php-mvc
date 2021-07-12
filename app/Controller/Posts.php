@@ -35,6 +35,14 @@ class Posts extends View
 
     public static function getPosts($request)
     {
+        return [
+            'items' => self::getPostItems($request, $pagination),
+            'pagination' => parent::getPagination($request, $pagination)
+        ];
+    }
+
+    public static function renderPosts($request)
+    {
         return parent::page('posts', 'Posts', [
             'items' => self::getPostItems($request, $pagination),
             'pagination' => parent::getPagination($request, $pagination)
