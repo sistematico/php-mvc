@@ -14,7 +14,13 @@
   </head>
   <body class="d-flex flex-column h-100">
     {{header}}
-    {{content}}
+
+    <main class="flex-shrink-0">
+      <div class="container">
+        {{content}}
+      </div>
+    </main>
+
     {{footer}}
     <script src="{{URL}}/js/bootstrap.bundle.min.js"></script>
   </body>
