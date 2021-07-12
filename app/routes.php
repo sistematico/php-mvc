@@ -11,7 +11,7 @@ $router->get('/404', [
 
 $router->get('/', [
     function($request) {
-        return new Response(200, Controller\Posts::getPosts($request));
+        return new Response(200, Controller\Posts::renderPosts($request));
     }
 ]);
 
