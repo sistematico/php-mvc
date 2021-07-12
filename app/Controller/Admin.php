@@ -10,6 +10,7 @@ use \App\Controller\Posts;
 
 class Admin extends AdminPage
 {
+    // 1
     public static function getHome($request)
     {
        $content = View::render('admin/page');
