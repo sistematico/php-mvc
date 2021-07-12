@@ -25,8 +25,10 @@ class Posts extends View
             $items .= parent::render('posts/post',[
                 'title' => $row->title,
                 'description' => $row->description,
-                'created' => $row->created,
-                'likes' => $row->likes
+                'picture' => $row->picture,
+                'likes' => $row->likes,
+                'created' => date('d/m/Y H:i:s', strtotime($row->created)),
+                'updated' => date('d/m/Y H:i:s', strtotime($row->updated))
             ]);
         }
 
@@ -50,8 +52,10 @@ class Posts extends View
             $items[] = [
                 'title' => $row->title,
                 'description' => $row->description,
-                'created' => $row->created,
-                'likes' => $row->likes
+                'picture' => $row->picture,
+                'likes' => $row->likes,
+                'created' => date('d/m/Y H:i:s', strtotime($row->created)),
+                'updated' => date('d/m/Y H:i:s', strtotime($row->updated))
             ];
         }
 
