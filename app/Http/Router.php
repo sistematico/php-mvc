@@ -69,7 +69,8 @@ class Router
 
                     return $methods[$httpMethod];
                 }
-                throw new \Exception("Método não permitido", 405);                
+                //throw new \Exception("Método não permitido", 405);                
+                $this->redirect('/405');
             }
         }
         //throw new \Exception("URL não encontrada", 404);
