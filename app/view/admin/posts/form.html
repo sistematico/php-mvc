@@ -2,13 +2,12 @@
     <fieldset>
         <legend>Novo post</legend>
         <div class="form-group">
-            <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
-            <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <label for="exampleInputEmail1" class="form-label mt-4">Título</label>
+            <input name="title" type="text" class="form-control" placeholder="Título do Post" value="{{title}}" required />
         </div>
         <div class="form-group">
             <label for="exampleTextarea" class="form-label mt-4">Descrição</label>
-            <textarea name="description" class="form-control" id="exampleTextarea" rows="3"></textarea>
+            <textarea name="description" class="form-control" id="exampleTextarea" rows="3">{{description}}</textarea>
         </div>
         <div class="form-group">
             <label for="formFile" class="form-label mt-4">Imagem</label>

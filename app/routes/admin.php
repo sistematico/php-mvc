@@ -3,6 +3,7 @@
 use App\Http\Response;
 use App\Controller\Admin\Admin;
 use App\Controller\Admin\Posts;
+use App\Controller\Admin\Users;
 
 $router->get('/admin/login', [
     'middlewares' => ['admin-logout'],
