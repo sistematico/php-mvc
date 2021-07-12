@@ -60,7 +60,13 @@ class Admin extends View
                 'current' => $hash == $current ? 'active' : '',
             ]);
         }
-        return self::getPage($title, $content);
+
+        $contentPanel = parent::render('admin/dashboard', [
+            'title' => 'Painel de Admin',
+            'links' => $links
+        ]);
+
+        return self::getPage($title, $contentPanel);
     }
 
     // // Posts
