@@ -12,6 +12,7 @@ define('APP', ROOT . '/app');
 define('SITENAME', 'PHP MVC');
 define('URL', $url);
 define('MAINTENANCE', false);
+define('DATABASE', ROOT . '/database/database.sqlite');
 
 require APP . '/bootstrap.php';
 
