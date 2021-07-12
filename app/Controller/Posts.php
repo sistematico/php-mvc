@@ -33,21 +33,47 @@ class Posts extends View
         return $items;
     }
 
-    public static function getPosts($request)
+    private static function getPostItemsRaw($request, &$pagination)
     {
-        return [
-            'items' => self::getPostItems($request, $pagination),
-            'pagination' => parent::getPagination($request, $pagination)
-        ];
+        $items = [];
+        
+        $total = Post::getPosts(null, null, null, 'COUNT(*) as total')->fetchObject()->total;
+        
+        $queryParams = $request->getQueryParams();
+        $current = $queryParams['pagina'] ?? 1;
+
+        $pagination = new Pagination($total, $current, 1);
+
+        $results = Post::getPosts(null, 'id DESC', $pagination->getLimit());
+
+        while ($row = $results->fetchObject(Post::class)) {
+            $items[] = [
+                'title' => $row->title,
+                'description' => $row->description,
+                'created' => $row->created,
+                'likes' => $row->likes
+            ];
+        }
+
+        return $items;
     }
 
-    public static function renderPosts($request)
+    public static function getPosts($request)
     {
         return parent::page('posts', 'Posts', [
             'items' => self::getPostItems($request, $pagination),
             'pagination' => parent::getPagination($request, $pagination)
         ]);
     }
+
+    public static function getPostsRaw($request)
+    {
+        return [
+            'items' => self::getPostItemsRaw($request, $pagination),
+            'pagination' => parent::getPagination($request, $pagination)
+        ];
+    }
+
 
     public static function getNewPost($request)
     {
