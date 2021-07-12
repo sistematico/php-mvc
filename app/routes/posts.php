@@ -24,9 +24,9 @@ $router->get('/posts/{id}/edit', [
     }
 ]);
 
-$router->post('/posts/{id}/edit', [
-    'middlewares' => ['user-login'],
-    function($request, $id) {
-        return new Response(200, Controller\Posts::setEditPost($request, $id));
-    }
-]);
+// $router->post('/posts/{id}/edit', [
+//     'middlewares' => ['user-login'],
+//     function($request, $id) {
+//         return new Response(200, Controller\Posts::setEditPost($request, $id));
+//     }
+// ]);
