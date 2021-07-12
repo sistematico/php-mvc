@@ -54,14 +54,14 @@ class Posts extends Page
     public static function setNewPost($request)
     {
         $postVars = $request->getPostVars();
-
+        
         $post = new Post;
-
         $post->title = $postVars['title'] ?? '';
         $post->description = $postVars['description'] ?? '';
         $post->picture = $postVars['picture'] ?? '';
-        $post->likes = $postVars['likes'] ?? '';
-        $post->title = $postVars['title'] ?? '';
+        $post->likes = 0;
+        $post->create();
 
+        $request->getRouter()->redirect('/admin/posts/' . $post->id . '/edit');
     }
 }
