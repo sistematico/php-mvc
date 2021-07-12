@@ -73,7 +73,15 @@ class Admin extends View
         ]);
     }
 
-    protected static function page($view, $title, $vars = [])
+    protected static function page($title, $content)
+    {
+        return parent::render('admin/main', [
+            'title' => $title,
+            'content' => $content
+        ]);
+    }
+
+    protected static function page2($view, $title, $vars = [])
     {
         return parent::render('admin/main', [
             'header' => parent::render('admin/header'),
