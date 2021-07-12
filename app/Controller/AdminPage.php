@@ -14,7 +14,17 @@ class AdminPage extends View
 
     private static function getAdminMenu($current)
     {
-        return View::render('admin/menu/box', []);
+        $links = '';
+
+        foreach (self::$links as $hash => $item) {
+            $links .= View::render('admin/menu/link', [
+                'label' => $item['label'],
+                'link' => $item['link']
+            ]);
+        }
+        return View::render('admin/menu/box', [
+            'links' => $links
+        ]);
     }
 
     public static function getAdminPage($title, $content)
