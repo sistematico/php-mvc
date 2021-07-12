@@ -3,13 +3,6 @@
 use App\Http\Response;
 use App\Controller;
 
-$router->get('/admin', [
-    'middlewares' => ['admin-login'],
-    function($request) {
-        return new Response(200, Controller\Admin::getPanel('Admin', '', 'home'));
-    }
-]);
-
 $router->get('/admin/login', [
     'middlewares' => ['admin-logout'],
     function($request) {
@@ -28,6 +21,13 @@ $router->get('/admin/logout', [
     'middlewares' => ['admin-login'],
     function($request) {
         return new Response(200, Controller\Admin::setLogout($request));
+    }
+]);
+
+$router->get('/admin', [
+    'middlewares' => ['admin-login'],
+    function($request) {
+        return new Response(200, Controller\Admin::getHome($request));
     }
 ]);
 
