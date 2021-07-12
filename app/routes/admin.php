@@ -42,6 +42,6 @@ $router->get('/admin/posts', [
 $router->get('/admin/users', [
     'middlewares' => ['admin-login'],
     function($request) {
-        return new Response(200, Admin::getAdminPanel('Admin - Users', '', 'users'));
+        return new Response(200, Users::getUsers($request));
     }
 ]);
