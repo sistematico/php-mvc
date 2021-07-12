@@ -25,7 +25,7 @@ class Posts extends View
             $items .= parent::render('posts/post',[
                 'title' => $row->title,
                 'description' => $row->description,
-                'date' => $row->created,
+                'created' => $row->created,
                 'likes' => $row->likes
             ]);
         }
