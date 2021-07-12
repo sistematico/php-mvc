@@ -61,12 +61,12 @@ class Admin extends View
             ]);
         }
 
-        $contentPanel = parent::render('admin/dashboard', [
+        $contentPanel = [
             'title' => 'Painel de Admin',
             'links' => $links
-        ]);
+        ];
 
-        return self::getPage($title, $contentPanel);
+        return self::getPage('admin/dashboard', $title, $contentPanel);
     }
 
     // // Posts
@@ -79,15 +79,7 @@ class Admin extends View
     //     ]);
     // }
 
-    public static function getPage($title, $content)
-    {
-        return parent::render('admin/main', [
-            'title' => $title,
-            'content' => $content
-        ]);
-    }
-
-    protected static function page2($view, $title, $vars = [])
+    private static function getPage($view, $title, $vars = [])
     {
         return parent::render('admin/main', [
             'header' => parent::render('admin/header'),
