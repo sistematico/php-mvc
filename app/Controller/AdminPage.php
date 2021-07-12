@@ -6,6 +6,10 @@ use \App\Core\View;
 
 class AdminPage extends View
 {
+    private static function getAdminMenu($current)
+    {
+        return View::render('admin/menu/box', []);
+    }
 
     public static function getAdminPage($title, $content)
     {
@@ -18,7 +22,7 @@ class AdminPage extends View
     public static function getAdminPanel($title, $content, $current)
     {
         $contentPanel = View::render('admin/panel', [
-            'menu' => 'Menu',
+            'menu' => self::getAdminMenu($current),
             'content' => $content
         ]);
 
