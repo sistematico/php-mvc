@@ -60,20 +60,20 @@ class Admin extends View
                 'current' => $hash == $current ? 'active' : '',
             ]);
         }
-        return self::page('admin/dashboard', $title, ['links' => $links]);
+        return self::page($title, $content);
     }
 
-    // Posts
-    public static function getPosts($request)
-    {
-        $posts = Posts::getPosts($request);
-        return self::page('posts', 'Posts', [
-            'items' => $posts['items'],
-            'pagination' => $posts['pagination']
-        ]);
-    }
+    // // Posts
+    // public static function getPosts($request)
+    // {
+    //     $posts = Posts::getPosts($request);
+    //     return self::page('posts', 'Posts', [
+    //         'items' => $posts['items'],
+    //         'pagination' => $posts['pagination']
+    //     ]);
+    // }
 
-    protected static function page($title, $content)
+    public static function getpage($title, $content)
     {
         return parent::render('admin/main', [
             'title' => $title,
