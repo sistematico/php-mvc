@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use \App\Core\View;
 use \App\Core\Session;
-use \App\Controller\Posts;
 use \App\Model\User;
 
 class Admin extends View
@@ -64,14 +63,13 @@ class Admin extends View
         return parent::pageAdmin('admin/dashboard', $title, ['links' => $links]);
     }
 
-
     // Posts
     public static function getPosts($request)
     {
-        //$posts = m
+        $posts = Posts::getPosts($request);
         return parent::page('posts', 'Posts', [
-            'items' => Posts::getPostItems($request, $pagination),
-            'pagination' => parent::getPagination($request, $pagination)
+            'items' => $posts['items'],
+            'pagination' => $posts['pagination']
         ]);
     }
 }
