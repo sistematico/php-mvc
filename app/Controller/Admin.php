@@ -17,6 +17,33 @@ class Admin extends View
         'posts' => ['label' => 'Posts',    'link' => URL . '/admin/posts', 'icon' => 'file']
     ];
 
+    private static function getPostItems($request, &$pagination)
+    {
+        $items = '';
+        
+        $total = Post::getPosts(null, null, null, 'COUNT(*) as total')->fetchObject()->total;
+        
+        $queryParams = $request->getQueryParams();
+        $current = $queryParams['pagina'] ?? 1;
+
+        $pagination = new Pagination($total, $current, 1);
+
+        $results = Post::getPosts(null, 'id DESC', $pagination->getLimit());
+
+        while ($row = $results->fetchObject(Post::class)) {
+            $items .= parent::render('posts/post',[
+                'title' => $row->title,
+                'description' => $row->description,
+                'picture' => $row->picture,
+                'likes' => $row->likes,
+                'created' => date('d/m/Y H:i:s', strtotime($row->created)),
+                'updated' => date('d/m/Y H:i:s', strtotime($row->updated))
+            ]);
+        }
+
+        return $items;
+    }
+
     public static function getLogin($request, $message = null)
     {
         $alert =  !is_null($message) ? parent::render('admin/alert', ['status' => $message]) : '';
@@ -84,10 +111,11 @@ class Admin extends View
     // Posts
     public static function getPosts($request)
     {
-        $posts = Posts::getPostsRaw($request);
-        return parent::render('admin/posts', 'Posts', [
-            'items' => $posts['items'],
-            'pagination' => $posts['pagination']
+        $content = parent::render('admin/posts', 'Posts', [
+            'items' => self::getPostItems($request, $pagination),
+            'pagination' => parent::getPagination($request, $pagination)
         ]);
+
+        return parent::getPanel('Cadastrar depoimento', $content, 'posts');
     }
 }
