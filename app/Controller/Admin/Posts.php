@@ -24,7 +24,7 @@ class Posts extends Page
 
         while ($row = $results->fetchObject(Post::class)) {
             // $items .= parent::render('posts/post',[
-            $items .= parent::render('admin/components',[
+            $items .= parent::render('admin/components/table',[
                 'title' => $row->title,
                 'description' => $row->description,
                 'picture' => $row->picture,
@@ -40,6 +40,7 @@ class Posts extends Page
     public static function getPosts($request)
     {
         $content = View::render('admin/posts/index', [
+            'maintitle' => 'Posts',
             'items' => self::getPostItems($request, $pagination),
         ]);
 
