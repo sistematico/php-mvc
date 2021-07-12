@@ -23,7 +23,8 @@ class Posts extends Page
         $results = Post::getPosts(null, 'id DESC', $pagination->getLimit());
 
         while ($row = $results->fetchObject(Post::class)) {
-            $items .= parent::render('posts/post',[
+            // $items .= parent::render('posts/post',[
+            $items .= parent::render('admin/components',[
                 'title' => $row->title,
                 'description' => $row->description,
                 'picture' => $row->picture,
@@ -39,7 +40,7 @@ class Posts extends Page
     public static function getPosts($request)
     {
         $content = View::render('admin/posts/index', [
-            'items' => self::getPostItems($request, $pagination)
+            'items' => self::getPostItems($request, $pagination),
         ]);
 
         return parent::getAdminPanel('Posts', $content, 'posts');
