@@ -27,6 +27,19 @@ class Post
         return true;
     }
 
+    public function update()
+    {
+        $this->id = (new Database('posts'))->update('id = ' . $this->id,[
+            'author_id' => $this->author,
+            'title' => $this->title,
+            'description' => $this->description,
+            'picture' => $this->picture,
+            'updated' => date('Y-m-d H:i:s')
+        ]);
+
+        return true;
+    }
+
     public static function getPostById($id)
     {
         return self::getPosts('id = ' . $id)->fetchObject(self::class);
