@@ -64,7 +64,7 @@ class Posts extends View
 
     public static function getPosts($request)
     {
-        return parent::page('posts', 'Posts', [
+        return parent::getPage('posts', 'Posts', [
             'items' => self::getPostItems($request, $pagination),
             'pagination' => parent::getPagination($request, $pagination)
         ]);
@@ -82,7 +82,7 @@ class Posts extends View
     public static function getNewPost($request)
     {
         $content = parent::render('posts/form');
-        return parent::page('posts/form', 'Enviar post');
+        return parent::getPage('posts/form', 'Enviar post');
     }
 
     public static function setNewPost2($request)
@@ -120,6 +120,6 @@ class Posts extends View
         }
 
         $content = parent::render('posts/form');
-        return parent::page('posts/form', 'Enviar post');
+        return parent::getPage('posts/form', 'Enviar post');
     }
 }

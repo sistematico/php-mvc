@@ -28,7 +28,7 @@ class View
         return str_replace($keys, array_values($vars),self::content($view));
     }
 
-    protected static function page($view, $title, $vars = [])
+    protected static function getPage($view, $title, $vars = [])
     {
         return self::render('main', [
             'header' => self::render('header'),
