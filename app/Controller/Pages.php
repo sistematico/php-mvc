@@ -22,8 +22,8 @@ class Pages extends View
         ]);
     }
 
-    public static function error($title, $message = [])
+    public static function error($title, $message = '')
     {
-        return parent::getPage('error', $title, $message);
+        return parent::getPage('error', $title, ['error' => $message]);
     }
 }
