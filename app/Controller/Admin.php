@@ -60,7 +60,7 @@ class Admin extends View
                 'current' => $hash == $current ? 'active' : '',
             ]);
         }
-        return self::page($title, $content);
+        return self::getPage($title, $content);
     }
 
     // // Posts
@@ -73,7 +73,7 @@ class Admin extends View
     //     ]);
     // }
 
-    public static function getpage($title, $content)
+    public static function getPage($title, $content)
     {
         return parent::render('admin/main', [
             'title' => $title,
