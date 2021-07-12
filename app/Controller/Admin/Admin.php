@@ -5,8 +5,6 @@ namespace App\Controller\Admin;
 use \App\Core\View;
 use \App\Core\Session;
 use \App\Model\User;
-use \App\Model\Post;
-use \App\Controller\Posts;
 use \App\Controller\Admin\Page;
 
 class Admin extends Page

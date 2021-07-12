@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use \App\Core\View;
 
-class AdminPage extends View
+class Page extends View
 {
     private static $links = [
         'home'  => ['label' => 'Painel',   'link' => URL . '/admin', 'icon' => 'home'],
