@@ -5,6 +5,7 @@ namespace App\Controller;
 use \App\Core\View;
 use \App\Core\Session;
 use \App\Model\User;
+use \App\Model\Post;
 
 class Admin extends View
 {
@@ -82,7 +83,11 @@ class Admin extends View
     // Posts
     public static function getPosts($request)
     {
-        $posts = Posts::getPosts($request);
-        return self::getPage('admin/posts', 'Posts');
+        $posts = Posts::getPostsRaw($request);
+
+        return self::getPage('admin/posts', 'Posts', [
+            'items' => $posts['items'],
+            'pagination' => $posts['pagination']
+        ]);
     }
 }
