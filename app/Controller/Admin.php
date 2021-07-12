@@ -26,7 +26,7 @@ class Admin extends View
         $queryParams = $request->getQueryParams();
         $current = $queryParams['pagina'] ?? 1;
 
-        $pagination = new Pagination($total, $current, 1);
+        $pagination = new \App\Core\Pagination($total, $current, 1);
 
         $results = Post::getPosts(null, 'id DESC', $pagination->getLimit());
 
