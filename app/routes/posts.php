@@ -16,3 +16,10 @@ $router->post('/posts/new', [
         return new Response(200, Controller\Posts::setNewPost($request));
     }
 ]);
+
+$router->get('/posts/{id}/edit', [
+    'middlewares' => ['user-login'],
+    function($request, $id) {
+        return new Response(200, Controller\Posts::getEditPost($request, $id));
+    }
+]);
