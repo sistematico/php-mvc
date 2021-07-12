@@ -79,14 +79,12 @@ class Admin extends View
     //     ]);
     // }
 
-    //private static function getPage($view, $title, $vars = [])
-    private static function getPage($view, $title, $content)
+    private static function getPage($view, $title, $vars = [])
     {
         return parent::render('admin/main', [
             'header' => parent::render('admin/header'),
             'footer' => parent::render('admin/footer'),
-            // 'content' => parent::render($view, $vars),
-            'content' => $content,
+            'content' => parent::render($view, $vars),
             'title' => $title
         ]);
     }
