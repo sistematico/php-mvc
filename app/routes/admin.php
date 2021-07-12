@@ -27,7 +27,7 @@ $router->get('/admin/logout', [
 $router->get('/admin', [
     'middlewares' => ['admin-login'],
     function($request) {
-        return new Response(200, Controller\Admin::getHome($request));
+        return new Response(200, Controller\Admin::getAdminPanel($request));
     }
 ]);
 

@@ -34,7 +34,8 @@ class AdminPage extends View
     {
         return View::render('admin/page',[
             'title' => $title,
-            'content' => $content
+            'content' => $content,
+            'header' => View::render('admin/header')
         ]);
     }
 
