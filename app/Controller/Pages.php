@@ -22,8 +22,22 @@ class Pages extends View
         ]);
     }
 
-    public static function error($title, $message = '')
+    public static function error($code)
     {
-        return parent::getPage('error', $title, ['error' => $message]);
+        switch ($code) {
+            case 404:
+                $title = 'Página não encontrada';
+                break;                
+            case 405:
+                $title = 'Método não permitido';
+                break;                
+            default:
+                $title = '';
+                break;
+        }
+
+        $error = 'Erro ' . $code;
+        
+        return parent::getPage('error', $title, ['error' => $error]);
     }
 }

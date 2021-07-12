@@ -70,12 +70,12 @@ class Router
                     return $methods[$httpMethod];
                 }
                 //throw new \Exception("Método não permitido", 405);                
-                $this->redirect('/405');
+                $this->redirect('/error/405');
             }
         }
         //throw new \Exception("URL não encontrada", 404);
         //header('Location:' . $this->url . '/404');
-        $this->redirect('/404');
+        $this->redirect('/error/404');
         exit;
     }
 
