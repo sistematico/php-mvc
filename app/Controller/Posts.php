@@ -54,7 +54,7 @@ class Posts extends View
         return parent::page('posts/new', 'Enviar post');
     }
 
-    public static function setNewPost($request)
+    public static function setNewPost2($request)
     {
         $postVars = $request->getPostVars();
 
@@ -65,5 +65,18 @@ class Posts extends View
         $post->create();
 
         return self::getPosts($request);
+    }
+
+    public static function setNewPost($request)
+    {
+        $postVars = $request->getPostVars();
+
+        $post = new Post;
+        $post->title = $postVars['title'];
+        $post->description = $postVars['description'];
+        $post->picture = $postVars['picture'];
+        $post->create();
+
+        $request->getRouter()->redirect('/posts/' . $post->id . '/edit');
     }
 }
