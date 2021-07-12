@@ -34,13 +34,13 @@ $router->get('/admin/logout', [
 $router->get('/admin/posts', [
     'middlewares' => ['admin-login'],
     function($request) {
-        return new Response(200, Controller\Admin::getPanel('Admin', '', 'home'));
+        return new Response(200, Controller\Admin::getPanel('Admin', '', 'posts'));
     }
 ]);
 
 $router->get('/admin/users', [
     'middlewares' => ['admin-login'],
     function($request) {
-        return new Response(200, Controller\Admin::getPanel('Admin', '', 'home'));
+        return new Response(200, Controller\Admin::getPanel('Admin', '', 'users'));
     }
 ]);
