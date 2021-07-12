@@ -20,6 +20,7 @@ class Page extends View
             $links .= View::render('admin/menu/link', [
                 'label' => $item['label'],
                 'link' => $item['link'],
+                'icon' => $item['icon'],
                 'current' => $hash == $current ? 'active' : ''
             ]);
         }
