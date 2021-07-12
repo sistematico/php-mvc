@@ -116,6 +116,6 @@ class Admin extends View
             'pagination' => parent::getPagination($request, $pagination)
         ]);
 
-        return parent::getPanel('Cadastrar depoimento', $content, 'posts');
+        return self::getPanel('Cadastrar depoimento', $content, 'posts');
     }
 }
