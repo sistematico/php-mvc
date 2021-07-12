@@ -99,5 +99,7 @@ class Posts extends Page
         $post->description = $postVars['description'] ?? $post->description;
         $post->picture = $postVars['picture'] ?? $post->picture;
         $post->update();
+
+        $request->getRouter()->redirect('/admin/posts/' . $post->id . '/edit?status=updated');
     }
 }
