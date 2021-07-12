@@ -83,7 +83,7 @@ class Admin extends View
     public static function getPosts($request)
     {
         $posts = Posts::getPosts($request);
-        return self::page('posts', 'Posts', [
+        return self::page('admin/posts', 'Posts', [
             'items' => $posts['items'],
             'pagination' => $posts['pagination']
         ]);
