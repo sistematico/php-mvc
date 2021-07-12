@@ -34,7 +34,6 @@ class Page extends View
             'title' => $title,
             'content' => $content,
             'header' => View::render('admin/header'),
-            'footer' => View::render('admin/footer')
         ]);
     }
 
