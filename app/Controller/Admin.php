@@ -10,20 +10,6 @@ use \App\Controller\Posts;
 
 class Admin extends AdminPage
 {
-
-    private static $links = [
-        'home'  => ['label' => 'Painel',   'link' => URL . '/admin', 'icon' => 'home'],
-        'users' => ['label' => 'Usuários', 'link' => URL . '/admin/users', 'icon' => 'users'],
-        'posts' => ['label' => 'Posts',    'link' => URL . '/admin/posts', 'icon' => 'file']
-    ];
-
-    public static function getHome($request)
-    {
-       $content = View::render('admin/index');
-       return parent::getAdminPanel('Painel de Admin', $content, 'home');
-    }
-
-    // Login
     public static function getLogin($request, $message = null)
     {
         $alert =  !is_null($message) ? View::render('admin/alert', ['status' => $message]) : '';
