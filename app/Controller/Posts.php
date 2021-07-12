@@ -4,9 +4,10 @@ namespace App\Controller;
 
 use \App\Model\Post;
 use \App\Core\View;
+use \App\Controller\Admin\Page;
 use \App\Core\Pagination;
 
-class Posts extends View
+class Posts extends Page
 {
     private static function getPostItems($request, &$pagination)
     {
