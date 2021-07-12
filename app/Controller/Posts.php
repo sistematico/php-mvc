@@ -51,7 +51,8 @@ class Posts extends View
 
     public static function getNewPost($request)
     {
-        return parent::page('posts/new', 'Enviar post');
+        $content = parent::render('posts/form');
+        return parent::page('posts/form', 'Enviar post');
     }
 
     public static function setNewPost2($request)
