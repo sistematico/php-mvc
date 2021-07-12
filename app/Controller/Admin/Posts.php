@@ -73,10 +73,25 @@ class Posts extends Page
     {
         $post = Post::getPostById($id);
 
+        if (!$post instanceof Post) {
+            $request->getRouter()->redirect('/admin/posts');
+        }
+
         $content = View::render('admin/posts/form', [
             'title' => $post->title,
             'description' => $post->description
         ]);
+
+        return parent::getAdminPanel('Editar Post', $content, 'posts');
+    }
+
+    public static function setEditPost($request, $id)
+    {
+        $post = Post::getPostById($id);
+
+        if (!$post instanceof Post) {
+            $request->getRouter()->redirect('/admin/posts');
+        }
 
         return parent::getAdminPanel('Editar Post', $content, 'posts');
     }
