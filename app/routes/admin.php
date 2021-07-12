@@ -32,6 +32,13 @@ $router->get('/admin', [
     }
 ]);
 
+$router->get('/admin/users', [
+    'middlewares' => ['admin-login'],
+    function($request) {
+        return new Response(200, Users::getUsers($request));
+    }
+]);
+
 $router->get('/admin/posts', [
     'middlewares' => ['admin-login'],
     function($request) {
@@ -39,9 +46,16 @@ $router->get('/admin/posts', [
     }
 ]);
 
-$router->get('/admin/users', [
+$router->get('/admin/posts/new', [
     'middlewares' => ['admin-login'],
     function($request) {
-        return new Response(200, Users::getUsers($request));
+        return new Response(200, Posts::getNewPost($request));
+    }
+]);
+
+$router->post('/admin/posts/new', [
+    'middlewares' => ['admin-login'],
+    function($request) {
+        return new Response(200, Posts::setNewPost($request));
     }
 ]);
