@@ -74,7 +74,7 @@ class Posts extends View
     {
         return [
             'items' => self::getPostItemsRaw($request, $pagination),
-            'pagination' => parent::getPagination($request, $pagination)
+            'pagination' => parent::getPaginationRaw($request, $pagination)
         ];
     }
 

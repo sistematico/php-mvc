@@ -70,4 +70,28 @@ class View
 
         return self::render('pagination/box', ['links' => $links]);
     }
+
+    public static function getPaginationRaw($request, $pagination)
+    {
+        $pages = $pagination->getPages();
+
+        if (count($pages) <= 1) return '';
+        
+        $links = [];
+
+        $url = $request->getRouter()->getCurrentUrl();
+        $queryParams = $request->getQueryParams();
+
+        foreach ($pages as $page) {
+            $queryParams['pagina'] = $page['page'];
+            $link = $url . '?' . http_build_query($queryParams);
+
+            $links[] = [
+                'page' => $page['page'],
+                'link' => $link
+            ];
+        }
+
+        return $links;
+    }
 }
