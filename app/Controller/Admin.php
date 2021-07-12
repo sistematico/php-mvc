@@ -62,4 +62,12 @@ class Admin extends View
         }
         return parent::pageAdmin('admin/dashboard', $title, ['links' => $links]);
     }
+
+    public static function getPosts($request)
+    {
+        return parent::pageAdmin('posts', 'Posts', [
+            'items' => self::getPostItems($request, $pagination),
+            'pagination' => parent::getPagination($request, $pagination)
+        ]);
+    }
 }
