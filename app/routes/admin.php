@@ -5,6 +5,7 @@ use App\Controller\Admin\Admin;
 use App\Controller\Admin\Posts;
 use App\Controller\Admin\Users;
 
+// Home
 $router->get('/admin', [
     'middlewares' => ['admin-login'],
     function($request) {
@@ -32,7 +33,6 @@ $router->get('/admin/logout', [
         return new Response(200, Admin::setLogout($request));
     }
 ]);
-
 
 // Admin Users
 $router->get('/admin/users', [
