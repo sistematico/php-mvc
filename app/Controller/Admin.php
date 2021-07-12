@@ -69,16 +69,6 @@ class Admin extends View
         return self::getPage('admin/dashboard', $title, $contentPanel);
     }
 
-    // // Posts
-    // public static function getPosts($request)
-    // {
-    //     $posts = Posts::getPosts($request);
-    //     return self::page('posts', 'Posts', [
-    //         'items' => $posts['items'],
-    //         'pagination' => $posts['pagination']
-    //     ]);
-    // }
-
     private static function getPage($view, $title, $vars = [])
     {
         return parent::render('admin/main', [
@@ -86,6 +76,16 @@ class Admin extends View
             'footer' => parent::render('admin/footer'),
             'content' => parent::render($view, $vars),
             'title' => $title
+        ]);
+    }
+
+    // Posts
+    public static function getPosts($request)
+    {
+        $posts = Posts::getPosts($request);
+        return self::page('posts', 'Posts', [
+            'items' => $posts['items'],
+            'pagination' => $posts['pagination']
         ]);
     }
 }
