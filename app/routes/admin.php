@@ -18,6 +18,7 @@ $router->get('/admin/login', [
 ]);
 
 $router->post('/admin/login', [
+    'middlewares' => ['admin-logout'],
     function($request) {
         return new Response(200, Controller\Admin::setAdminLogin($request));
     }

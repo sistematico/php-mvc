@@ -3,29 +3,23 @@
 use App\Http\Response;
 use App\Controller;
 
-$router->get('/admin', [
-    'middlewares' => ['admin-login'],
+$router->get('/users/login', [
+    'middlewares' => ['user-logout'],
     function($request) {
-        return new Response(200, Controller\Admin::getAdminPanel('Admin', '', 'home'));
+        return new Response(200, Controller\User::getUserLogin($request));
     }
 ]);
 
-$router->get('/admin/login', [
-    'middlewares' => ['admin-logout'],
+$router->post('/users/login', [
+    'middlewares' => ['user-logout'],
     function($request) {
-        return new Response(200, Controller\Admin::getAdminLogin($request));
+        return new Response(200, Controller\User::setUserLogin($request));
     }
 ]);
 
-$router->post('/admin/login', [
+$router->get('/users/logout', [
+    'middlewares' => ['user-login'],
     function($request) {
-        return new Response(200, Controller\Admin::setAdminLogin($request));
-    }
-]);
-
-$router->get('/admin/logout', [
-    'middlewares' => ['admin-login'],
-    function($request) {
-        return new Response(200, Controller\Admin::setAdminLogout($request));
+        return new Response(200, Controller\User::setUserLogout($request));
     }
 ]);
