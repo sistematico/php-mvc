@@ -17,19 +17,22 @@ class Admin extends View
         'posts' => ['label' => 'Posts',    'link' => URL . '/admin/posts', 'icon' => 'file']
     ];
 
-    
+    public static function getHome($request)
+    {
+       $content = View::render 
+    }
 
     // Login
     public static function getLogin($request, $message = null)
     {
-        $alert =  !is_null($message) ? parent::render('admin/alert', ['status' => $message]) : '';
+        $alert =  !is_null($message) ? View::render('admin/alert', ['status' => $message]) : '';
         
-        return parent::render('admin/login', [
+        return View::render('admin/login', [
             'alert' => $alert,
             'title' => 'Admin Login'
         ]);
 
-        return parent::render('admin/login', 'Login');
+        return View::render('admin/login', 'Login');
     }
     
     public static function setLogin($request)
