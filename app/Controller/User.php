@@ -12,7 +12,7 @@ class User extends View
     {
         $alert =  !is_null($message) ? parent::render('admin/alert', ['status' => $message]) : '';
 
-        return parent::render('login', [
+        return parent::render('users/login', [
             'alert' => $alert,
             'title' => 'Login do Usuário'
         ]);
