@@ -47,4 +47,27 @@ class AdminPage extends View
 
         return self::getAdminPage($title, $contentPanel);
     }
+
+    public static function getPagination($request, $pagination)
+    {
+        $pages = $pagination->getPages();
+
+        if (count($pages) <= 1) return '';
+        
+        $links = '';
+        $url = $request->getRouter()->getCurrentUrl();
+        $queryParams = $request->getQueryParams();
+
+        foreach ($pages as $page) {
+            $queryParams['pagina'] = $page['page'];
+            $link = $url . '?' . http_build_query($queryParams);
+
+            $links .= self::render('admin/pagination/link', [
+                'page' => $page['page'],
+                'link' => $link
+            ]);
+        }
+
+        return self::render('admin/pagination/box', ['links' => $links]);
+    }
 }
