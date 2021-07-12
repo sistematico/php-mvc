@@ -2,7 +2,10 @@
 
 namespace App\Controller\Admin;
 
-class Posts
+// use \App\Controller\Admin\Page;
+use \App\Core\View;
+
+class Posts extends Page
 {
-    
+
 }
