@@ -110,4 +110,10 @@ class Posts extends View
 
         $request->getRouter()->redirect('/posts/' . $post->id . '/edit');
     }
+
+    public static function getEditPost($request, $id)
+    {
+        $content = parent::render('posts/form');
+        return parent::page('posts/form', 'Enviar post');
+    }
 }
