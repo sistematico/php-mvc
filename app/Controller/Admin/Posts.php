@@ -27,7 +27,7 @@ class Posts extends Page
             $items .= parent::render('admin/components/table',[
                 'title' => $row->title,
                 'description' => $row->description,
-                'picture' => $row->picture,
+                'image' => $row->image,
                 'likes' => $row->likes,
                 'created' => date('d/m/Y H:i:s', strtotime($row->created)),
                 'updated' => date('d/m/Y H:i:s', strtotime($row->updated))
@@ -64,7 +64,7 @@ class Posts extends Page
         $post = new Post;
         $post->title = $postVars['title'] ?? '';
         $post->description = $postVars['description'] ?? '';
-        $post->picture = $postVars['picture'] ?? '';
+        $post->image = $postVars['image'] ?? '';
         $post->likes = 0;
         $post->create();
 
@@ -99,7 +99,7 @@ class Posts extends Page
 
         $post->title = $postVars['title'] ?? $post->title;
         $post->description = $postVars['description'] ?? $post->description;
-        $post->picture = $postVars['picture'] ?? $post->picture;
+        $post->image = $postVars['image'] ?? $post->image;
         $post->update();
 
         $request->getRouter()->redirect('/admin/posts/' . $post->id . '/edit?status=updated');

@@ -10,7 +10,7 @@ class Post
     public $author;
     public $title;
     public $description;
-    public $picture;
+    public $image;
     public $likes;
     public $date;
 
@@ -20,7 +20,7 @@ class Post
             'author_id' => $this->author,
             'title' => $this->title,
             'description' => $this->description,
-            'picture' => $this->picture,
+            'image' => $this->image,
             'likes' => 0
         ]);
 
@@ -33,7 +33,7 @@ class Post
             'author_id' => $this->author,
             'title' => $this->title,
             'description' => $this->description,
-            'picture' => $this->picture,
+            'image' => $this->image,
             'updated' => date('Y-m-d H:i:s')
         ]);
 

@@ -25,7 +25,7 @@ class Posts extends View
             $items .= parent::render('posts/post',[
                 'title' => $row->title,
                 'description' => $row->description,
-                'picture' => $row->picture,
+                'image' => $row->image,
                 'likes' => $row->likes,
                 'created' => date('d/m/Y H:i:s', strtotime($row->created)),
                 'updated' => date('d/m/Y H:i:s', strtotime($row->updated))
@@ -56,7 +56,7 @@ class Posts extends View
         $post = new Post;
         $post->title = $postVars['title'];
         $post->description = $postVars['description'];
-        $post->picture = $postVars['picture'];
+        $post->image = $postVars['image'];
         $post->create();
 
         $request->getRouter()->redirect('/posts/' . $post->id . '/edit');
