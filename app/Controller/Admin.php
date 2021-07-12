@@ -78,6 +78,16 @@ class Admin extends View
         $request->getRouter()->redirect('/admin/login');
     }
 
+    public static function getPosts($request)
+    {
+        $content = parent::render('admin/posts', 'Posts', [
+            'items' => self::getPostItems($request, $pagination),
+            'pagination' => parent::getPagination($request, $pagination)
+        ]);
+        
+        return self::getPage('Cadastrar depoimento', $content, 'posts');
+    }
+
     public static function getPanel($title, $content, $current)
     {
         $links = '';
@@ -96,7 +106,7 @@ class Admin extends View
         ];
 
         return self::getPage('admin/dashboard', $title, $contentPanel);
-    }
+    }   
 
     private static function getPage($view, $title, $vars = [])
     {
@@ -106,16 +116,5 @@ class Admin extends View
             'content' => parent::render($view, $vars),
             'title' => $title
         ]);
-    }
-
-    // Posts
-    public static function getPosts($request)
-    {
-        $content = parent::render('admin/posts', 'Posts', [
-            'items' => self::getPostItems($request, $pagination),
-            'pagination' => parent::getPagination($request, $pagination)
-        ]);
-
-        return self::getPanel('Cadastrar depoimento', $content, 'posts');
     }
 }
