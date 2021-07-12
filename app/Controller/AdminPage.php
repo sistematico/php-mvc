@@ -17,7 +17,12 @@ class AdminPage extends View
 
     public static function getAdminPanel($title, $content, $current)
     {
-        return self::getAdminPage($title, $content);
+        $contentPanel = View::render('admin/panel', [
+            'menu' => 'Menu',
+            'content' => $content
+        ]);
+
+        return self::getAdminPage($title, $contentPanel);
     }
 
 }
