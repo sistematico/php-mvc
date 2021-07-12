@@ -69,13 +69,9 @@ class Posts extends Page
     {
         $post = Post::getPostById($id);
 
-        echo '<pre>';
-        print_r($post);
-        echo '</pre>';
-        exit;
-
         $content = View::render('admin/posts/form', [
-            'title' => 'Editar Post'
+            'title' => $post->title,
+            'description' => $post->description
         ]);
 
         return parent::getAdminPanel('Editar Post', $content, 'posts');
