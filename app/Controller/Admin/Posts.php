@@ -14,6 +14,11 @@ class Posts extends Page
         $items = '';
         
         $total = Post::getPosts(null, null, null, 'COUNT(*) as total')->fetchObject()->total;
+
+        echo '<pre>';
+        print_r($total);
+        echo '</pre>';
+        exit;
         
         $queryParams = $request->getQueryParams();
         $current = $queryParams['pagina'] ?? 1;

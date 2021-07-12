@@ -2,6 +2,7 @@
 
 use App\Http\Response;
 use App\Controller\Admin\Admin;
+use App\Controller\Admin\Posts;
 
 $router->get('/admin/login', [
     'middlewares' => ['admin-logout'],
@@ -34,7 +35,7 @@ $router->get('/admin', [
 $router->get('/admin/posts', [
     'middlewares' => ['admin-login'],
     function($request) {
-        return new Response(200, Admin::getAdminPanel('Admin - Posts', '', 'posts'));
+        return new Response(200, Posts::getPosts($request));
     }
 ]);
 
