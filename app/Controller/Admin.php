@@ -12,7 +12,7 @@ class Admin extends AdminPage
 {
     public static function getHome($request)
     {
-       $content = View::render('admin/index');
+       $content = View::render('admin/page');
        return parent::getAdminPanel('Painel de Admin', $content, 'home');
     }
 
