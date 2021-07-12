@@ -93,6 +93,11 @@ class Posts extends Page
             $request->getRouter()->redirect('/admin/posts');
         }
 
-        return parent::getAdminPanel('Editar Post', $content, 'posts');
+        $postVars = $request->getPostVars();
+
+        $post->title = $postVars['title'] ?? $post->title;
+        $post->description = $postVars['description'] ?? $post->description;
+        $post->picture = $postVars['picture'] ?? $post->picture;
+        $post->update();
     }
 }
