@@ -5,23 +5,13 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 
 use App\Http\Router;
 
+$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'];
+
 define('ROOT', dirname(__DIR__));
 define('APP', ROOT . '/app');
 define('SITENAME', 'PHP MVC');
-define('URL', 'https://localhost');
+define('URL', $url);
 define('MAINTENANCE', false);
-
-$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-echo '<pre>';
-print_r($actual_link);
-echo '</pre>';
-exit;
-
-echo '<pre>';
-print_r(URL);
-echo '</pre>';
-exit;
 
 require APP . '/bootstrap.php';
 
