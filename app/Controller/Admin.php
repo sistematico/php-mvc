@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use \App\Core\View;
 use \App\Core\Session;
-use \App\Model\User as EntityUser;
+use \App\Model\User;
 
 class Admin extends View
 {
@@ -33,8 +33,8 @@ class Admin extends View
         $email = $postVars['email'];
         $password = $postVars['password'];
 
-        $user = EntityUser::getUserByEmail($email);
-        if (!$user instanceof EntityUser OR !password_verify($password, $user->password)) {
+        $user = User::getUserByEmail($email);
+        if (!$user instanceof User OR !password_verify($password, $user->password)) {
             return self::getAdminLogin($request, 'E-mail ou senha inválidos.');
         }
 
@@ -61,13 +61,5 @@ class Admin extends View
             ]);
         }
         return parent::pageAdmin('admin/dashboard', $title, ['links' => $links]);
-    }
-
-    public static function getPosts($request)
-    {
-        return parent::pageAdmin('posts', 'Posts', [
-            'items' => self::getPostItems($request, $pagination),
-            'pagination' => parent::getPagination($request, $pagination)
-        ]);
     }
 }

@@ -15,6 +15,7 @@ $router->get('/', [
     }
 ]);
 
+// Admin
 $router->get('/admin', [
     'middlewares' => ['admin-login'],
     function($request) {
@@ -25,23 +26,24 @@ $router->get('/admin', [
 $router->get('/admin/login', [
     'middlewares' => ['admin-logout'],
     function($request) {
-        return new Response(200, Controller\User::getAdminLogin($request));
+        return new Response(200, Controller\Admin::getAdminLogin($request));
     }
 ]);
 
 $router->post('/admin/login', [
     function($request) {
-        return new Response(200, Controller\User::setAdminLogin($request));
+        return new Response(200, Controller\Admin::setAdminLogin($request));
     }
 ]);
 
 $router->get('/admin/logout', [
     'middlewares' => ['admin-login'],
     function($request) {
-        return new Response(200, Controller\User::setAdminLogout($request));
+        return new Response(200, Controller\Admin::setAdminLogout($request));
     }
 ]);
 
+// Posts
 $router->get('/posts/new', [
     'middlewares' => ['user-login'],
     function($request) {
