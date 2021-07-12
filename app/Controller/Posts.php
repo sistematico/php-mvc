@@ -49,12 +49,12 @@ class Posts extends View
         ]);
     }
 
-    public static function getPost($request)
+    public static function getNewPost($request)
     {
         return parent::page('posts/new', 'Enviar post');
     }
 
-    public static function setPost($request)
+    public static function setNewPost($request)
     {
         $postVars = $request->getPostVars();
 

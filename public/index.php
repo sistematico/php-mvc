@@ -14,6 +14,6 @@ require APP . '/bootstrap.php';
 
 $router = new Router(URL);
 
-require APP . '/routes.php';
+require APP . '/routes/main.php';
 
 $router->dispatch()->sendResponse();
