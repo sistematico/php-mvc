@@ -62,6 +62,6 @@ class Posts extends Page
         $post->likes = 0;
         $post->create();
 
-        $request->getRouter()->redirect('/admin/posts/' . $post->id . '/edit');
+        $request->getRouter()->redirect('/admin/posts/' . $post->id . '/edit?status=created');
     }
 }
