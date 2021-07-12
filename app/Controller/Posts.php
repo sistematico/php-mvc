@@ -113,6 +113,17 @@ class Posts extends View
 
     public static function getEditPost($request, $id)
     {
+        $post = Post::getPostById($id);
+
+        if (!$post instanceof Post) {
+            $request->getRouter()->redirect('/posts');
+        }
+
+        echo '<pre>';
+        print_r($post);
+        echo '</pre>';
+        exit;
+
         $content = parent::render('posts/form');
         return parent::page('posts/form', 'Enviar post');
     }
