@@ -30,7 +30,6 @@ class User extends View
         }
 
         Session::UserLogin($user);
-
         $request->getRouter()->redirect('/');
     }
 
@@ -38,6 +37,6 @@ class User extends View
     {
         Session::UserLogout();
 
-        $request->getRouter()->redirect('/user/login');
+        $request->getRouter()->redirect('/users/login');
     }
 }
