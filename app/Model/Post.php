@@ -25,6 +25,11 @@ class Post
         return true;
     }
 
+    public static function getPostById($id)
+    {
+        return self::getPosts('id = ' . $id)->fetchObject(self::class);
+    }
+
     public static function getPosts($where = null, $order = null, $limit = null, $fields = '*')
     {
         return (new Database('posts'))->select($where, $order, $limit, $fields);
