@@ -78,24 +78,10 @@ class Posts extends View
         ];
     }
 
-
     public static function getNewPost($request)
     {
         $content = parent::render('posts/form');
         return parent::getPage('posts/form', 'Enviar post');
-    }
-
-    public static function setNewPost2($request)
-    {
-        $postVars = $request->getPostVars();
-
-        $post = new Post;
-        $post->title = $postVars['title'];
-        $post->description = $postVars['description'];
-        $post->picture = $postVars['picture'];
-        $post->create();
-
-        return self::getPosts($request);
     }
 
     public static function setNewPost($request)

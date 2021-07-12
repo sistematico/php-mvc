@@ -10,6 +10,12 @@ use \App\Controller\Posts;
 
 class Admin extends AdminPage
 {
+    public static function getHome($request)
+    {
+       $content = View::render('admin/index');
+       return parent::getAdminPanel('Painel de Admin', $content, 'home');
+    }
+
     public static function getLogin($request, $message = null)
     {
         $alert =  !is_null($message) ? View::render('admin/alert', ['status' => $message]) : '';

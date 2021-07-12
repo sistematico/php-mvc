@@ -6,6 +6,12 @@ use \App\Core\View;
 
 class AdminPage extends View
 {
+    private static $links = [
+        'home'  => ['label' => 'Painel',   'link' => URL . '/admin', 'icon' => 'home'],
+        'users' => ['label' => 'Usuários', 'link' => URL . '/admin/users', 'icon' => 'users'],
+        'posts' => ['label' => 'Posts',    'link' => URL . '/admin/posts', 'icon' => 'file']
+    ];
+
     private static function getAdminMenu($current)
     {
         return View::render('admin/menu/box', []);
