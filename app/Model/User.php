@@ -6,6 +6,21 @@ use App\Core\Database;
 
 class User
 {
+    // id       INTEGER primary key,
+    // login    TEXT,
+    // email    TEXT,
+    // password TEXT,
+    // fullname TEXT,
+    // avatar   TEXT,
+    // role     TEXT default 'user',
+    // created  REAL default CURRENT_TIMESTAMP,
+    // access   TEXT,
+    // gender   text,
+    // bio      text,
+    // verified text default 'N',
+    // plan     text default 'basic',
+    // valid    text default CURRENT_TIMESTAMP
+
     public $id;
     public $login;
     public $email;
@@ -18,11 +33,10 @@ class User
         date_default_timezone_set('America/Sao_Paulo');
 
         $this->id = (new Database('users'))->insert([
-            'author_id' => $this->author,
-            'title' => $this->title,
-            'description' => $this->description,
-            'image' => $this->image,
-            'likes' => 0
+            'login' => $this->login,
+            'email' => $this->email,
+            'password' => $this->password,
+            'fullname' => $this->fullname
         ]);
 
         return true;
