@@ -77,3 +77,17 @@ $router->post('/admin/posts/{id}/edit', [
         return new Response(200, Posts::setEditPost($request, $id));
     }
 ]);
+
+$router->get('/admin/posts/{id}/delete', [
+    'middlewares' => ['admin-login'],
+    function($request, $id) {
+        return new Response(200, Posts::getDeletePost($request, $id));
+    }
+]);
+
+$router->post('/admin/posts/{id}/delete', [
+    'middlewares' => ['admin-login'],
+    function($request, $id) {
+        return new Response(200, Posts::setDeletePost($request, $id));
+    }
+]);
