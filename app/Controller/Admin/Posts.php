@@ -9,7 +9,26 @@ use \App\Core\Pagination;
 
 class Posts extends AdminPage
 {
-    public static function getAlert($view, $type, $message) {
+    public static function getAlert($request, $view = 'admin/components/alert') {
+        $queryParams = $request->getQueryParams();
+        
+        if (!isset($queryParams['status'])) return '';
+        
+        switch ($queryParams['status']) {
+            case 'created':
+                $message = 'Post criado com sucesso';
+                $type = 'success';
+                break;
+            case 'updated':
+                $message = 'Post editado com sucesso';
+                $type = 'success';
+                break;
+            default:
+                $message = 'Retorno não identificado.';
+                $type = 'warning';
+                break;
+        }
+
         return View::render($view, ['type' => $type,'message' => $message]);
     }
 
@@ -90,7 +109,7 @@ class Posts extends AdminPage
             'maintitle' => 'Editar post',
             'title' => $post->title,
             'description' => $post->description,
-            'status' => self::getAlert('admin/components/alert', 'success', 'Post editado com sucesso')
+            'status' => self::getAlert($request)
         ]);
 
         return AdminPage::getAdminPanel('Editar Post', $content, 'posts');
