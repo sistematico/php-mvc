@@ -103,7 +103,7 @@ class Users extends AdminPage
         
         $login = $postVars['login'] ?? '';
         $email = $postVars['email'] ?? '';
-        $senha = $postVars['senha'] ?? '';
+        $password = $postVars['password'] ?? '';
 
         $userCheck = User::getUserByEmailOrLogin($email, $login);
         if ($userCheck instanceof User) {
@@ -145,22 +145,20 @@ class Users extends AdminPage
             $request->getRouter()->redirect('/admin/users?status=notfound');
         }
 
-        $postVars = $request->getPostVars();
-        
+        $postVars = $request->getPostVars();        
         $login = $postVars['login'] ?? '';
         $email = $postVars['email'] ?? '';
-        $senha = $postVars['senha'] ?? '';
+        $password = $postVars['password'] ?? '';
 
         $userCheck = User::getUserByEmailOrLogin($email, $login);
         if ($userCheck instanceof User && $userCheck->id != $id) {
             $request->getRouter()->redirect('/admin/users/' . $id . '/edit?status=duplicated');
         }
 
-
-        $post->login = $postVars['login'] ?? $post->title;
-        $post->fullname = $postVars['fullname'] ?? $post->description;
-        $post->image = $postVars['image'] ?? $post->image;
-        $post->update();
+        $user->login = $login;
+        $user->email = $email;
+        $user->senha = password_hash($senha, PASSWORD_DEFAULT);
+        $user->update();
 
         $request->getRouter()->redirect('/admin/users/' . $id . '/edit?status=updated');
     }
