@@ -78,13 +78,14 @@ class Users extends AdminPage
     public static function getNewUser($request)
     {
         $content = View::render('admin/users/form',[
-            'maintitle' => 'Novo post',
+            'maintitle' => 'Adicionar usuário',
             'login' => '',
             'fullname' => '',
-            'status' => ''
+            'status' => '',
+            'btnlabel' => 'Cadastrar'
         ]);
 
-        return AdminPage::getAdminPanel('Cadastrar Post', $content, 'posts');
+        return AdminPage::getAdminPanel('Adicionar usuário', $content, 'posts');
     }
 
     public static function setNewUser($request)

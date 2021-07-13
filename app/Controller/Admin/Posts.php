@@ -82,7 +82,8 @@ class Posts extends AdminPage
             'maintitle' => 'Novo post',
             'title' => '',
             'description' => '',
-            'status' => ''
+            'status' => '',
+            'btnlabel' => 'Cadastrar'
         ]);
 
         return AdminPage::getAdminPanel('Cadastrar Post', $content, 'posts');
