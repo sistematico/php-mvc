@@ -121,17 +121,19 @@ class Users extends AdminPage
 
     public static function getEditUser($request, $id)
     {
-        $post = User::getById($id);
+        $user = User::getById($id);
 
-        if (!$post instanceof User) {
+        if (!$user instanceof User) {
             $request->getRouter()->redirect('/admin/users');
         }
 
         $content = View::render('admin/users/form', [
             'maintitle' => 'Editar usuário',
-            'login' => $post->login,
-            'fullname' => $post->fullname,
-            'status' => self::getAlert($request)
+            'login' => $user->login,
+            'email' => $user->email,
+            'fullname' => $user->fullname,
+            'status' => self::getAlert($request),
+            'btnlabel' => 'Atualizar'
         ]);
 
         return AdminPage::getAdminPanel('Editar usuário', $content, 'users');
