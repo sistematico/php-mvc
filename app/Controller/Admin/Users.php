@@ -50,14 +50,13 @@ class Users extends AdminPage
         $results = User::read(null, 'id DESC', $pagination->getLimit());
 
         while ($row = $results->fetchObject(User::class)) {
-            $items .= AdminPage::render('admin/posts/item',[
+            $items .= AdminPage::render('admin/users/item',[
                 'id' => $row->id,
-                'title' => $row->title,
-                'description' => $row->description,
-                'image' => $row->image,
-                'likes' => $row->likes,
-                'created' => date('d/m/Y H:i:s', strtotime($row->created)),
-                'updated' => date('d/m/Y H:i:s', strtotime($row->updated))
+                'login' => $row->login,
+                'fullname' => $row->fullname,
+                'email' => $row->email,
+                'avatar' => $row->avatar,
+                'created' => date('d/m/Y H:i:s', strtotime($row->created))
             ]);
         }
 
@@ -66,7 +65,7 @@ class Users extends AdminPage
 
     public static function getUsers($request)
     {
-        $content = View::render('admin/posts/index', [
+        $content = View::render('admin/users/index', [
             'maintitle' => 'Posts',
             'items' => self::getUserItems($request, $pagination),
             'pagination' => AdminPage::getPagination($request, $pagination),
@@ -78,7 +77,7 @@ class Users extends AdminPage
 
     public static function getNewUser($request)
     {
-        $content = View::render('admin/posts/form',[
+        $content = View::render('admin/users/form',[
             'maintitle' => 'Novo post',
             'login' => '',
             'fullname' => '',
