@@ -101,16 +101,11 @@ class Users extends AdminPage
         $email = $postVars['email'] ?? '';
         $senha = $postVars['senha'] ?? '';
 
-        $user = User::getUserByEmailOrLogin($email, $login);
-        if ($user instanceof User) {
+        $userCheck = User::getUserByEmailOrLogin($email, $login);
+        if ($userCheck instanceof User) {
             $request->getRouter()->redirect('/admin/users/new?status=duplicated');
         }
-
-        echo '<pre>';
-        print_r($email);
-        echo '</pre>';
-        exit;
-        
+       
         $post = new User;
         $post->title = $postVars['login'] ?? '';
         $post->description = $postVars['fullname'] ?? '';
