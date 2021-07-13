@@ -31,6 +31,10 @@ class Users extends AdminPage
                 $message = 'O e-mail e/ou usuário já está sendo usado';
                 $type = 'danger';
                 break;
+            case 'notfound':
+                $message = 'ID não encontrado';
+                $type = 'info';
+                break;
             default:
                 $message = 'Retorno não identificado.';
                 $type = 'warning';
@@ -136,13 +140,22 @@ class Users extends AdminPage
 
     public static function setEditUser($request, $id)
     {
-        $post = User::getById($id);
-
-        if (!$post instanceof User) {
-            $request->getRouter()->redirect('/admin/users');
+        $user = User::getById($id);
+        if (!$user instanceof User) {
+            $request->getRouter()->redirect('/admin/users?status=notfound');
         }
 
         $postVars = $request->getPostVars();
+        
+        $login = $postVars['login'] ?? '';
+        $email = $postVars['email'] ?? '';
+        $senha = $postVars['senha'] ?? '';
+
+        $userCheck = User::getUserByEmailOrLogin($email, $login);
+        if ($userCheck instanceof User && $userCheck->id != $id) {
+            $request->getRouter()->redirect('/admin/users/' . $id . '/edit?status=duplicated');
+        }
+
 
         $post->login = $postVars['login'] ?? $post->title;
         $post->fullname = $postVars['fullname'] ?? $post->description;
