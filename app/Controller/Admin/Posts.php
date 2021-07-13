@@ -10,6 +10,15 @@ use \App\Core\Pagination;
 class Posts extends AdminPage
 {
 
+    private static function getStatus($request)
+    {
+        $queryParams = $request->getQueryParams();
+        echo '<pre>';
+        print_r($queryParams);
+        echo '</pre>';
+        exit;
+    }
+
     private static function getPostItems($request, &$pagination)
     {
         $items = '';
