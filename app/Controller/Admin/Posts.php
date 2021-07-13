@@ -105,6 +105,6 @@ class Posts extends AdminPage
         $post->image = $postVars['image'] ?? $post->image;
         $post->update();
 
-        $request->getRouter()->redirect('/admin/posts/' . $post->id . '/edit?status=updated');
+        $request->getRouter()->redirect('/admin/posts/' . $id . '/edit?status=updated');
     }
 }
