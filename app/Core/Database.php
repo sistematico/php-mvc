@@ -15,6 +15,14 @@ class Database
     $this->setConnection();
   }
 
+  private function create() {
+    $db = new \PDO(self::$driver . ':' . self::$path);
+
+    $sql = file_get_contents('file.sql');
+
+    $qr = $db->exec($sql);
+  }
+
   private function setConnection()
   {
     try{
