@@ -157,7 +157,7 @@ class Users extends AdminPage
 
         $user->login = $login;
         $user->email = $email;
-        $user->senha = password_hash($senha, PASSWORD_DEFAULT);
+        $user->password = password_hash($password, PASSWORD_DEFAULT);
         $user->update();
 
         $request->getRouter()->redirect('/admin/users/' . $id . '/edit?status=updated');
