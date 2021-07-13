@@ -36,7 +36,7 @@ class Users extends AdminPage
         return View::render($view, ['type' => $type,'message' => $message]);
     }
 
-    private static function getPostItems($request, &$pagination)
+    private static function getUserItems($request, &$pagination)
     {
         $items = '';
         
@@ -64,11 +64,11 @@ class Users extends AdminPage
         return $items;
     }
 
-    public static function getPosts($request)
+    public static function getUsers($request)
     {
         $content = View::render('admin/posts/index', [
             'maintitle' => 'Posts',
-            'items' => self::getPostItems($request, $pagination),
+            'items' => self::getUserItems($request, $pagination),
             'pagination' => AdminPage::getPagination($request, $pagination),
             'status' => self::getAlert($request)
         ]);
