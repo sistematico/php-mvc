@@ -9,14 +9,8 @@ use \App\Core\Pagination;
 
 class Posts extends AdminPage
 {
-
-    private static function getStatus($request)
-    {
-        $queryParams = $request->getQueryParams();
-        echo '<pre>';
-        print_r($queryParams);
-        echo '</pre>';
-        exit;
+    public static function getAlert($view, $type, $message) {
+        return View::render($view, ['type' => $type,'message' => $message]);
     }
 
     private static function getPostItems($request, &$pagination)
@@ -33,7 +27,6 @@ class Posts extends AdminPage
         $results = Post::getPosts(null, 'id DESC', $pagination->getLimit());
 
         while ($row = $results->fetchObject(Post::class)) {
-            // $items .= AdminPage::render('posts/post',[
             $items .= AdminPage::render('admin/posts/item',[
                 'id' => $row->id,
                 'title' => $row->title,
@@ -97,7 +90,7 @@ class Posts extends AdminPage
             'maintitle' => 'Editar post',
             'title' => $post->title,
             'description' => $post->description,
-            'status' => self::getStatus($request)
+            'status' => self::getAlert('admin/alert/status', 'success', 'Post editado com sucesso')
         ]);
 
         return AdminPage::getAdminPanel('Editar Post', $content, 'posts');
