@@ -11,7 +11,7 @@ class Posts extends AdminPage
 {
     public static function getAlert($request, $view = 'admin/components/alert') {
         $queryParams = $request->getQueryParams();
-        
+
         if (!isset($queryParams['status'])) return '';
         
         switch ($queryParams['status']) {
@@ -131,5 +131,21 @@ class Posts extends AdminPage
         $post->update();
 
         $request->getRouter()->redirect('/admin/posts/' . $id . '/edit?status=updated');
+    }
+
+    public static function getDeletePost($request, $id)
+    {
+        $post = Post::getPostById($id);
+
+        if (!$post instanceof Post) {
+            $request->getRouter()->redirect('/admin/posts');
+        }
+
+        $content = View::render('admin/posts/delete', [
+            'maintitle' => 'Excluir post',
+            'title' => $post->title
+        ]);
+
+        return AdminPage::getAdminPanel('Excluir Post', $content, 'posts');
     }
 }
