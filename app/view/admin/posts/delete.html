@@ -1,19 +1,13 @@
 <form method="post" data-bitwarden-watching="1">
     <fieldset>
         <legend>{{maintitle}}</legend>
-        {{status}}
         <div class="form-group">
-            <label for="exampleInputEmail1" class="form-label mt-4">Título</label>
-            <input name="title" type="text" class="form-control" placeholder="Título do Post" value="{{title}}" required />
-        </div>
-        <div class="form-group">
-            <label for="exampleTextarea" class="form-label mt-4">Descrição</label>
-            <textarea name="description" class="form-control" id="exampleTextarea" rows="3">{{description}}</textarea>
+
         </div>
         <div class="form-group">
             <label for="formFile" class="form-label mt-4">Imagem</label>
             <input name="image" class="form-control" type="file" id="formFile" />
         </div>
-        <button type="submit" class="btn btn-primary mt-4">Postar</button>
+        <button type="submit" class="btn btn-danger mt-4">Excluir</button>
     </fieldset>
 </form>
