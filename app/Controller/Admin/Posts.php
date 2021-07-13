@@ -86,7 +86,7 @@ class Posts extends AdminPage
             'btnlabel' => 'Cadastrar'
         ]);
 
-        return AdminPage::getAdminPanel('Cadastrar Post', $content, 'posts');
+        return AdminPage::getAdminPanel('Novo post', $content, 'posts');
     }
 
     public static function setNewPost($request)
@@ -115,10 +115,11 @@ class Posts extends AdminPage
             'maintitle' => 'Editar post',
             'title' => $post->title,
             'description' => $post->description,
-            'status' => self::getAlert($request)
+            'status' => self::getAlert($request),
+            'btnlabel' => 'Atualizar'
         ]);
 
-        return AdminPage::getAdminPanel('Editar Post', $content, 'posts');
+        return AdminPage::getAdminPanel('Editar post', $content, 'posts');
     }
 
     public static function setEditPost($request, $id)
