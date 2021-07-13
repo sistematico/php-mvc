@@ -16,11 +16,11 @@ class Users extends AdminPage
         
         switch ($queryParams['status']) {
             case 'created':
-                $message = 'Post criado com sucesso';
+                $message = 'Usuário criado com sucesso';
                 $type = 'success';
                 break;
             case 'updated':
-                $message = 'Post editado com sucesso';
+                $message = 'Usuário editado com sucesso';
                 $type = 'success';
                 break;
             case 'deleted':
