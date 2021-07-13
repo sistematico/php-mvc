@@ -86,7 +86,7 @@ class Users extends AdminPage
             'login' => '',
             'email' => '',
             'fullname' => '',
-            'status' => '',
+            'status' => self::getAlert($request),
             'btnlabel' => 'Cadastrar'
         ]);
 
