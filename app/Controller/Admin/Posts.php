@@ -25,7 +25,7 @@ class Posts extends AdminPage
 
         while ($row = $results->fetchObject(Post::class)) {
             // $items .= AdminPage::render('posts/post',[
-            $items .= AdminPage::render('admin/components/table',[
+            $items .= AdminPage::render('admin/posts/item',[
                 'id' => $row->id,
                 'title' => $row->title,
                 'description' => $row->description,
