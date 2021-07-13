@@ -33,15 +33,18 @@ class Post
     {
         date_default_timezone_set('America/Sao_Paulo');
 
-        $this->id = (new Database('posts'))->update('id = ' . $this->id,[
+        return (new Database('posts'))->update('id = ' . $this->id,[
             'author_id' => $this->author,
             'title' => $this->title,
             'description' => $this->description,
             'image' => $this->image,
             'updated' => date('Y-m-d H:i:s', time())
         ]);
+    }
 
-        return true;
+    public function delete()
+    {
+        return (new Database('posts'))->delete('id = ' . $this->id);
     }
 
     public static function getPostById($id)
