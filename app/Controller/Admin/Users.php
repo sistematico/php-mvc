@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use \App\Core\View;
-use \App\Model\Post;
+use \App\Model\User;
 use \App\Core\Pagination;
 use \App\Controller\Admin\Page as AdminPage;
 
@@ -24,7 +24,7 @@ class Users extends AdminPage
                 $type = 'success';
                 break;
             case 'deleted':
-                $message = 'Post excluído com sucesso';
+                $message = 'Usuário excluído com sucesso';
                 $type = 'success';
                 break;
             default:
@@ -40,16 +40,16 @@ class Users extends AdminPage
     {
         $items = '';
         
-        $total = Post::read(null, null, null, 'COUNT(*) as total')->fetchObject()->total;
+        $total = User::read(null, null, null, 'COUNT(*) as total')->fetchObject()->total;
         
         $queryParams = $request->getQueryParams();
         $current = $queryParams['pagina'] ?? 1;
 
         $pagination = new Pagination($total, $current, 2);
 
-        $results = Post::read(null, 'id DESC', $pagination->getLimit());
+        $results = User::read(null, 'id DESC', $pagination->getLimit());
 
-        while ($row = $results->fetchObject(Post::class)) {
+        while ($row = $results->fetchObject(User::class)) {
             $items .= AdminPage::render('admin/posts/item',[
                 'id' => $row->id,
                 'title' => $row->title,
@@ -92,7 +92,7 @@ class Users extends AdminPage
     {
         $postVars = $request->getPostVars();
         
-        $post = new Post;
+        $post = new User;
         $post->title = $postVars['title'] ?? '';
         $post->description = $postVars['description'] ?? '';
         $post->image = $postVars['image'] ?? '';
@@ -104,9 +104,9 @@ class Users extends AdminPage
 
     public static function getEditPost($request, $id)
     {
-        $post = Post::getById($id);
+        $post = User::getById($id);
 
-        if (!$post instanceof Post) {
+        if (!$post instanceof User) {
             $request->getRouter()->redirect('/admin/posts');
         }
 
@@ -122,9 +122,9 @@ class Users extends AdminPage
 
     public static function setEditPost($request, $id)
     {
-        $post = Post::getById($id);
+        $post = User::getById($id);
 
-        if (!$post instanceof Post) {
+        if (!$post instanceof User) {
             $request->getRouter()->redirect('/admin/posts');
         }
 
@@ -140,9 +140,9 @@ class Users extends AdminPage
 
     public static function getDeletePost($request, $id)
     {
-        $post = Post::getById($id);
+        $post = User::getById($id);
 
-        if (!$post instanceof Post) {
+        if (!$post instanceof User) {
             $request->getRouter()->redirect('/admin/posts');
         }
 
@@ -156,9 +156,9 @@ class Users extends AdminPage
 
     public static function setDeletePost($request, $id)
     {
-        $post = Post::getById($id);
+        $post = User::getById($id);
 
-        if (!$post instanceof Post) {
+        if (!$post instanceof User) {
             $request->getRouter()->redirect('/admin/posts');
         }
 

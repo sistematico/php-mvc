@@ -4,7 +4,7 @@ namespace App\Model;
 
 use App\Core\Database;
 
-class Post
+class User
 {
     public $id;
     public $login;
