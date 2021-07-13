@@ -45,42 +45,42 @@ $router->get('/admin/users', [
 $router->get('/admin/users/new', [
     'middlewares' => ['admin-login'],
     function($request) {
-        return new Response(200, Posts::getNewUser($request));
+        return new Response(200, Users::getNewUser($request));
     }
 ]);
 
 $router->post('/admin/users/new', [
     'middlewares' => ['admin-login'],
     function($request) {
-        return new Response(200, Posts::setNewUser($request));
+        return new Response(200, Users::setNewUser($request));
     }
 ]);
 
 $router->get('/admin/users/{id}/edit', [
     'middlewares' => ['admin-login'],
     function($request, $id) {
-        return new Response(200, Posts::getEditUser($request, $id));
+        return new Response(200, Users::getEditUser($request, $id));
     }
 ]);
 
 $router->post('/admin/users/{id}/edit', [
     'middlewares' => ['admin-login'],
     function($request, $id) {
-        return new Response(200, Posts::setEditUser($request, $id));
+        return new Response(200, Users::setEditUser($request, $id));
     }
 ]);
 
 $router->get('/admin/users/{id}/delete', [
     'middlewares' => ['admin-login'],
     function($request, $id) {
-        return new Response(200, Posts::getDeleteUser($request, $id));
+        return new Response(200, Users::getDeleteUser($request, $id));
     }
 ]);
 
 $router->post('/admin/users/{id}/delete', [
     'middlewares' => ['admin-login'],
     function($request, $id) {
-        return new Response(200, Posts::setDeleteUser($request, $id));
+        return new Response(200, Users::setDeleteUser($request, $id));
     }
 ]);
 

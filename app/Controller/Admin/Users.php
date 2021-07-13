@@ -88,7 +88,7 @@ class Users extends AdminPage
         return AdminPage::getAdminPanel('Cadastrar Post', $content, 'posts');
     }
 
-    public static function setNewPost($request)
+    public static function setNewUser($request)
     {
         $postVars = $request->getPostVars();
         
@@ -102,7 +102,7 @@ class Users extends AdminPage
         $request->getRouter()->redirect('/admin/users/' . $post->id . '/edit?status=created');
     }
 
-    public static function getEditPost($request, $id)
+    public static function getEditUser($request, $id)
     {
         $post = User::getById($id);
 
@@ -120,7 +120,7 @@ class Users extends AdminPage
         return AdminPage::getAdminPanel('Editar usuário', $content, 'users');
     }
 
-    public static function setEditPost($request, $id)
+    public static function setEditUser($request, $id)
     {
         $post = User::getById($id);
 
@@ -138,7 +138,7 @@ class Users extends AdminPage
         $request->getRouter()->redirect('/admin/users/' . $id . '/edit?status=updated');
     }
 
-    public static function getDeletePost($request, $id)
+    public static function getDeleteUser($request, $id)
     {
         $post = User::getById($id);
 
@@ -154,7 +154,7 @@ class Users extends AdminPage
         return AdminPage::getAdminPanel('Excluir usuário', $content, 'users');
     }
 
-    public static function setDeletePost($request, $id)
+    public static function setDeleteUser($request, $id)
     {
         $post = User::getById($id);
 
