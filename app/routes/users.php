@@ -20,14 +20,14 @@ $router->post('/users/login', [
 $router->get('/users/signup', [
     'middlewares' => ['user-logout'],
     function($request) {
-        return new Response(200, Controller\User::getUserSignup($request));
+        return new Response(200, Controller\User::getNewUser($request));
     }
 ]);
 
 $router->post('/users/signup', [
     'middlewares' => ['user-logout'],
     function($request) {
-        return new Response(200, Controller\User::setUserSignup($request));
+        return new Response(200, Controller\User::setNewUser($request));
     }
 ]);
 
