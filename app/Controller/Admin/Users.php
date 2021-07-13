@@ -74,13 +74,13 @@ class Users extends AdminPage
     public static function getUsers($request)
     {
         $content = View::render('admin/users/index', [
-            'maintitle' => 'Posts',
+            'maintitle' => 'Usuários',
             'items' => self::getUserItems($request, $pagination),
             'pagination' => AdminPage::getPagination($request, $pagination),
             'status' => self::getAlert($request)
         ]);
 
-        return AdminPage::getAdminPanel('Posts', $content, 'posts');
+        return AdminPage::getAdminPanel('Usuários', $content, 'users');
     }
 
     public static function getNewUser($request)
@@ -94,7 +94,7 @@ class Users extends AdminPage
             'btnlabel' => 'Cadastrar'
         ]);
 
-        return AdminPage::getAdminPanel('Adicionar usuário', $content, 'posts');
+        return AdminPage::getAdminPanel('Adicionar usuário', $content, 'users');
     }
 
     public static function setNewUser($request)
