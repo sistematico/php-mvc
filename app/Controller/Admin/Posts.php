@@ -62,8 +62,10 @@ class Posts extends AdminPage
     public static function getNewPost($request)
     {
         $content = View::render('admin/posts/form',[
+            'maintitle' => 'Novo post',
             'title' => '',
-            'description' => ''
+            'description' => '',
+            'status' => ''
         ]);
 
         return AdminPage::getAdminPanel('Cadastrar Post', $content, 'posts');
@@ -92,8 +94,10 @@ class Posts extends AdminPage
         }
 
         $content = View::render('admin/posts/form', [
+            'maintitle' => 'Editar post',
             'title' => $post->title,
-            'description' => $post->description
+            'description' => $post->description,
+            'status' => self::getStatus($request)
         ]);
 
         return AdminPage::getAdminPanel('Editar Post', $content, 'posts');
