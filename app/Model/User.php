@@ -52,10 +52,10 @@ class User
         date_default_timezone_set('America/Sao_Paulo');
 
         return (new Database('users'))->update('id = ' . $this->id,[
-            'author_id' => $this->author,
-            'title' => $this->title,
-            'description' => $this->description,
-            'image' => $this->image,
+            'login' => $this->login,
+            'email' => $this->email,
+            'password' => $this->password,
+            'fullname' => $this->fullname,
             'updated' => date('Y-m-d H:i:s', time())
         ]);
     }
