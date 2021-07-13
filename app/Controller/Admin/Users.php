@@ -76,12 +76,12 @@ class Users extends AdminPage
         return AdminPage::getAdminPanel('Posts', $content, 'posts');
     }
 
-    public static function getNewPost($request)
+    public static function getNewUser($request)
     {
         $content = View::render('admin/posts/form',[
             'maintitle' => 'Novo post',
-            'title' => '',
-            'description' => '',
+            'login' => '',
+            'fullname' => '',
             'status' => ''
         ]);
 
@@ -93,13 +93,13 @@ class Users extends AdminPage
         $postVars = $request->getPostVars();
         
         $post = new User;
-        $post->title = $postVars['title'] ?? '';
-        $post->description = $postVars['description'] ?? '';
+        $post->title = $postVars['login'] ?? '';
+        $post->description = $postVars['fullname'] ?? '';
         $post->image = $postVars['image'] ?? '';
         $post->likes = 0;
         $post->create();
 
-        $request->getRouter()->redirect('/admin/posts/' . $post->id . '/edit?status=created');
+        $request->getRouter()->redirect('/admin/users/' . $post->id . '/edit?status=created');
     }
 
     public static function getEditPost($request, $id)
@@ -107,17 +107,17 @@ class Users extends AdminPage
         $post = User::getById($id);
 
         if (!$post instanceof User) {
-            $request->getRouter()->redirect('/admin/posts');
+            $request->getRouter()->redirect('/admin/users');
         }
 
-        $content = View::render('admin/posts/form', [
-            'maintitle' => 'Editar post',
-            'title' => $post->title,
-            'description' => $post->description,
+        $content = View::render('admin/users/form', [
+            'maintitle' => 'Editar usuário',
+            'login' => $post->login,
+            'fullname' => $post->fullname,
             'status' => self::getAlert($request)
         ]);
 
-        return AdminPage::getAdminPanel('Editar Post', $content, 'posts');
+        return AdminPage::getAdminPanel('Editar usuário', $content, 'users');
     }
 
     public static function setEditPost($request, $id)
@@ -125,17 +125,17 @@ class Users extends AdminPage
         $post = User::getById($id);
 
         if (!$post instanceof User) {
-            $request->getRouter()->redirect('/admin/posts');
+            $request->getRouter()->redirect('/admin/users');
         }
 
         $postVars = $request->getPostVars();
 
-        $post->title = $postVars['title'] ?? $post->title;
-        $post->description = $postVars['description'] ?? $post->description;
+        $post->login = $postVars['login'] ?? $post->title;
+        $post->fullname = $postVars['fullname'] ?? $post->description;
         $post->image = $postVars['image'] ?? $post->image;
         $post->update();
 
-        $request->getRouter()->redirect('/admin/posts/' . $id . '/edit?status=updated');
+        $request->getRouter()->redirect('/admin/users/' . $id . '/edit?status=updated');
     }
 
     public static function getDeletePost($request, $id)
@@ -143,15 +143,15 @@ class Users extends AdminPage
         $post = User::getById($id);
 
         if (!$post instanceof User) {
-            $request->getRouter()->redirect('/admin/posts');
+            $request->getRouter()->redirect('/admin/users');
         }
 
-        $content = View::render('admin/posts/delete', [
+        $content = View::render('admin/users/delete', [
             'maintitle' => 'Excluir post',
-            'title' => $post->title
+            'login' => $post->login
         ]);
 
-        return AdminPage::getAdminPanel('Excluir Post', $content, 'posts');
+        return AdminPage::getAdminPanel('Excluir usuário', $content, 'users');
     }
 
     public static function setDeletePost($request, $id)
@@ -159,11 +159,11 @@ class Users extends AdminPage
         $post = User::getById($id);
 
         if (!$post instanceof User) {
-            $request->getRouter()->redirect('/admin/posts');
+            $request->getRouter()->redirect('/admin/users');
         }
 
         $post->delete();
 
-        $request->getRouter()->redirect('/admin/posts?status=deleted');
+        $request->getRouter()->redirect('/admin/users?status=deleted');
     }
 }
