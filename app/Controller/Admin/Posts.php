@@ -4,9 +4,10 @@ namespace App\Controller\Admin;
 
 use \App\Core\View;
 use \App\Model\Post;
+use \App\Controller\Admin\Page as AdminPage;
 use \App\Core\Pagination;
 
-class Posts extends Page
+class Posts extends AdminPage
 {
 
     private static function getPostItems($request, &$pagination)
@@ -18,13 +19,13 @@ class Posts extends Page
         $queryParams = $request->getQueryParams();
         $current = $queryParams['pagina'] ?? 1;
 
-        $pagination = new Pagination($total, $current, 1);
+        $pagination = new Pagination($total, $current, 2);
 
         $results = Post::getPosts(null, 'id DESC', $pagination->getLimit());
 
         while ($row = $results->fetchObject(Post::class)) {
-            // $items .= parent::render('posts/post',[
-            $items .= parent::render('admin/components/table',[
+            // $items .= AdminPage::render('posts/post',[
+            $items .= AdminPage::render('admin/components/table',[
                 'id' => $row->id,
                 'title' => $row->title,
                 'description' => $row->description,
@@ -43,9 +44,10 @@ class Posts extends Page
         $content = View::render('admin/posts/index', [
             'maintitle' => 'Posts',
             'items' => self::getPostItems($request, $pagination),
+            'pagination' => AdminPage::getPagination($request, $pagination)
         ]);
 
-        return parent::getAdminPanel('Posts', $content, 'posts');
+        return AdminPage::getAdminPanel('Posts', $content, 'posts');
     }
 
     public static function getNewPost($request)
@@ -55,7 +57,7 @@ class Posts extends Page
             'description' => ''
         ]);
 
-        return parent::getAdminPanel('Cadastrar Post', $content, 'posts');
+        return AdminPage::getAdminPanel('Cadastrar Post', $content, 'posts');
     }
 
     public static function setNewPost($request)
@@ -85,7 +87,7 @@ class Posts extends Page
             'description' => $post->description
         ]);
 
-        return parent::getAdminPanel('Editar Post', $content, 'posts');
+        return AdminPage::getAdminPanel('Editar Post', $content, 'posts');
     }
 
     public static function setEditPost($request, $id)
