@@ -1,7 +1,6 @@
 create table users
 (
-    id       INTEGER
-        primary key,
+    id       INTEGER primary key,
     login    TEXT,
     email    TEXT,
     password TEXT,
@@ -19,10 +18,8 @@ create table users
 
 create table posts
 (
-    id          INTEGER
-        primary key,
-    author_id   INTEGER
-        references users,
+    id          INTEGER primary key,
+    author_id   INTEGER references users,
     title       INTEGER,
     description TEXT,
     image       TEXT,
@@ -33,10 +30,8 @@ create table posts
 
 create table comments
 (
-    id      INTEGER
-        primary key,
-    post_id INTEGER
-        references posts,
+    id      INTEGER primary key,
+    post_id INTEGER references posts,
     author  TEXT,
     comment INTEGER,
     created TEXT default CURRENT_TIMESTAMP,

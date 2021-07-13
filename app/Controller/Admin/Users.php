@@ -93,6 +93,17 @@ class Users extends AdminPage
     {
         $postVars = $request->getPostVars();
         
+        $login = $postVars['login'] ?? '';
+        $email = $postVars['email'] ?? '';
+        $senha = $postVars['senha'] ?? '';
+
+        $user = User::getUserByEmailOrLogin($email, $login);
+
+        echo '<pre>';
+        print_r($postVars);
+        echo '</pre>';
+        exit;
+        
         $post = new User;
         $post->title = $postVars['login'] ?? '';
         $post->description = $postVars['fullname'] ?? '';
