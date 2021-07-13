@@ -3,16 +3,20 @@
         <legend>{{maintitle}}</legend>
         {{status}}
         <div class="form-group">
-            <label class="form-label mt-4">Login</label>
-            <input name="login" type="text" class="form-control" placeholder="Título do Post" value="{{login}}" required />
+            <label class="form-label mt-4">Usuário</label>
+            <input name="login" type="text" class="form-control" placeholder="usuario" value="{{login}}" required />
         </div>
         <div class="form-group">
             <label class="form-label mt-4">E-mail</label>
-            <input name="email" type="text" class="form-control" placeholder="Título do Post" value="{{email}}" required />
+            <input name="email" type="text" class="form-control" placeholder="usuario@gmail.com" value="{{email}}" required />
+        </div>
+        <div class="form-group">
+            <label class="form-label mt-4">Senha</label>
+            <input name="password" type="password" class="form-control" placeholder="Sua senha" required />
         </div>
         <div class="form-group">
             <label class="form-label mt-4">Bio</label>
-            <textarea name="description" class="form-control" rows="3">{{description}}</textarea>
+            <textarea name="bio" class="form-control" rows="3">{{bio}}</textarea>
         </div>
         <div class="form-group">
             <label for="formFile" class="form-label mt-4">Avatar</label>
