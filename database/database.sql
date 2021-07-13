@@ -42,21 +42,11 @@ create table comments
 create table chats
 (
     id      INTEGER primary key,
-    post_id INTEGER references posts,
-    author  TEXT,
-    comment INTEGER,
-    created TEXT default CURRENT_TIMESTAMP,
-    updated TEXT
 );
 
 create table messages
 (
     id      INTEGER primary key,
-    post_id INTEGER references posts,
-    author  TEXT,
-    comment INTEGER,
-    created TEXT default CURRENT_TIMESTAMP,
-    updated TEXT
 );
 
 
