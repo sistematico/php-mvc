@@ -64,7 +64,7 @@ class Posts extends View
 
     public static function getEditPost($request, $id)
     {
-        $post = Post::getPostById($id);
+        $post = Post::getById($id);
 
         if (!$post instanceof Post) {
             $request->getRouter()->redirect('/posts');

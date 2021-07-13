@@ -51,7 +51,7 @@ class Post
         return (new Database('users'))->delete('id = ' . $this->id);
     }
 
-    public static function id($id)
+    public static function getById($id)
     {
         return self::read('id = ' . $id)->fetchObject(self::class);
     }

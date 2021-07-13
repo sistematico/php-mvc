@@ -104,7 +104,7 @@ class Posts extends AdminPage
 
     public static function getEditPost($request, $id)
     {
-        $post = Post::getPostById($id);
+        $post = Post::getById($id);
 
         if (!$post instanceof Post) {
             $request->getRouter()->redirect('/admin/posts');
@@ -122,7 +122,7 @@ class Posts extends AdminPage
 
     public static function setEditPost($request, $id)
     {
-        $post = Post::getPostById($id);
+        $post = Post::getById($id);
 
         if (!$post instanceof Post) {
             $request->getRouter()->redirect('/admin/posts');
@@ -140,7 +140,7 @@ class Posts extends AdminPage
 
     public static function getDeletePost($request, $id)
     {
-        $post = Post::getPostById($id);
+        $post = Post::getById($id);
 
         if (!$post instanceof Post) {
             $request->getRouter()->redirect('/admin/posts');
@@ -156,7 +156,7 @@ class Posts extends AdminPage
 
     public static function setDeletePost($request, $id)
     {
-        $post = Post::getPostById($id);
+        $post = Post::getById($id);
 
         if (!$post instanceof Post) {
             $request->getRouter()->redirect('/admin/posts');
