@@ -110,14 +110,13 @@ class Users extends AdminPage
             $request->getRouter()->redirect('/admin/users/new?status=duplicated');
         }
        
-        $post = new User;
-        $post->title = $postVars['login'] ?? '';
-        $post->description = $postVars['fullname'] ?? '';
-        $post->image = $postVars['image'] ?? '';
-        $post->likes = 0;
-        $post->create();
+        $user = new User;
+        $user->login = $login;
+        $user->email = $email;
+        $user->password = $password;
+        $user->create();
 
-        $request->getRouter()->redirect('/admin/users/' . $post->id . '/edit?status=created');
+        $request->getRouter()->redirect('/admin/users/' . $user->id . '/edit?status=created');
     }
 
     public static function getEditUser($request, $id)
