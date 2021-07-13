@@ -80,6 +80,7 @@ class Users extends AdminPage
         $content = View::render('admin/users/form',[
             'maintitle' => 'Adicionar usuário',
             'login' => '',
+            'email' => '',
             'fullname' => '',
             'status' => '',
             'btnlabel' => 'Cadastrar'
