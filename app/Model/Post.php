@@ -16,6 +16,8 @@ class Post
 
     public function create()
     {
+        date_default_timezone_set('America/Sao_Paulo');
+
         $this->id = (new Database('posts'))->insert([
             'author_id' => $this->author,
             'title' => $this->title,
@@ -29,12 +31,14 @@ class Post
 
     public function update()
     {
+        date_default_timezone_set('America/Sao_Paulo');
+
         $this->id = (new Database('posts'))->update('id = ' . $this->id,[
             'author_id' => $this->author,
             'title' => $this->title,
             'description' => $this->description,
             'image' => $this->image,
-            'updated' => date('Y-m-d H:i:s')
+            'updated' => date('Y-m-d H:i:s', time())
         ]);
 
         return true;
