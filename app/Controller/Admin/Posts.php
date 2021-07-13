@@ -148,4 +148,17 @@ class Posts extends AdminPage
 
         return AdminPage::getAdminPanel('Excluir Post', $content, 'posts');
     }
+
+    public static function setDeletePost($request, $id)
+    {
+        $post = Post::getPostById($id);
+
+        if (!$post instanceof Post) {
+            $request->getRouter()->redirect('/admin/posts');
+        }
+
+        $post->delete();
+
+        $request->getRouter()->redirect('/admin/posts?status=deleted');
+    }
 }
