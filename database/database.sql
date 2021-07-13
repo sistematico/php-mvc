@@ -4,31 +4,52 @@ create table users
     login    TEXT,
     email    TEXT,
     password TEXT,
-    fullname TEXT,
     avatar   TEXT,
+    fullname TEXT,
+    bio      TEXT,
+    gender   TEXT,
     role     TEXT default 'user',
-    created  REAL default CURRENT_TIMESTAMP,
+    plan     TEXT default 'basic',
+    valid    TEXT default CURRENT_TIMESTAMP,
+    verified TEXT default 'N',
     access   TEXT,
-    gender   text,
-    bio      text,
-    verified text default 'N',
-    plan     text default 'basic',
-    valid    text default CURRENT_TIMESTAMP
+    created  TEXT,
+    created  TEXT default CURRENT_TIMESTAMP
 );
 
 create table posts
 (
     id          INTEGER primary key,
     author_id   INTEGER references users,
-    title       INTEGER,
+    title       TEXT,
     description TEXT,
     image       TEXT,
     likes       INTEGER,
-    created     TEXT default CURRENT_TIMESTAMP,
-    updated     TEXT
+    updated     TEXT,
+    created     TEXT default CURRENT_TIMESTAMP
 );
 
 create table comments
+(
+    id      INTEGER primary key,
+    post_id INTEGER references posts,
+    author  TEXT,
+    comment INTEGER,
+    created TEXT default CURRENT_TIMESTAMP,
+    updated TEXT
+);
+
+create table chats
+(
+    id      INTEGER primary key,
+    post_id INTEGER references posts,
+    author  TEXT,
+    comment INTEGER,
+    created TEXT default CURRENT_TIMESTAMP,
+    updated TEXT
+);
+
+create table messages
 (
     id      INTEGER primary key,
     post_id INTEGER references posts,
