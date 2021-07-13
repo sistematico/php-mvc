@@ -3,17 +3,21 @@
         <legend>{{maintitle}}</legend>
         {{status}}
         <div class="form-group">
-            <label class="form-label mt-4">Título</label>
-            <input name="title" type="text" class="form-control" placeholder="Título do Post" value="{{title}}" required />
+            <label class="form-label mt-4">Login</label>
+            <input name="login" type="text" class="form-control" placeholder="Título do Post" value="{{login}}" required />
         </div>
         <div class="form-group">
-            <label class="form-label mt-4">Descrição</label>
+            <label class="form-label mt-4">E-mail</label>
+            <input name="email" type="text" class="form-control" placeholder="Título do Post" value="{{email}}" required />
+        </div>
+        <div class="form-group">
+            <label class="form-label mt-4">Bio</label>
             <textarea name="description" class="form-control" rows="3">{{description}}</textarea>
         </div>
         <div class="form-group">
-            <label for="formFile" class="form-label mt-4">Imagem</label>
-            <input name="image" class="form-control" type="file" id="formFile" />
+            <label for="formFile" class="form-label mt-4">Avatar</label>
+            <input name="avatar" class="form-control" type="file" id="formFile" />
         </div>
-        <button type="submit" class="btn btn-primary mt-4">Postar</button>
+        <button type="submit" class="btn btn-primary mt-4">{{btnlabel}}</button>
     </fieldset>
 </form>
