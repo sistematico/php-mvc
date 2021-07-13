@@ -7,7 +7,7 @@ use \App\Model\Post;
 use \App\Core\Pagination;
 use \App\Controller\Admin\Page as AdminPage;
 
-class Posts extends AdminPage
+class Users extends AdminPage
 {
     public static function getAlert($request, $view = 'admin/components/alert') {
         $queryParams = $request->getQueryParams();
