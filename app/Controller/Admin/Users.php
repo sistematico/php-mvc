@@ -100,7 +100,7 @@ class Users extends AdminPage
         $user = User::getUserByEmailOrLogin($email, $login);
 
         echo '<pre>';
-        print_r($postVars);
+        print_r($user);
         echo '</pre>';
         exit;
         

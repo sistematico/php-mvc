@@ -60,4 +60,9 @@ class User
     {
         return (new Database('users'))->select('email = "' . $email . '"')->fetchObject(self::class);
     }
+    
+    public static function getUserByEmailOrLogin($email, $login)
+    {
+        return (new Database('users'))->select('email = "' . $email . '" OR login = "' . $login . '"')->fetchObject(self::class);
+    }
 }
