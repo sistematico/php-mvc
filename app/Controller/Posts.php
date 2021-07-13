@@ -12,14 +12,14 @@ class Posts extends View
     {
         $items = '';
         
-        $total = Post::getPosts(null, null, null, 'COUNT(*) as total')->fetchObject()->total;
+        $total = Post::read(null, null, null, 'COUNT(*) as total')->fetchObject()->total;
         
         $queryParams = $request->getQueryParams();
         $current = $queryParams['pagina'] ?? 1;
 
         $pagination = new Pagination($total, $current, 1);
 
-        $results = Post::getPosts(null, 'id DESC', $pagination->getLimit());
+        $results = Post::read(null, 'id DESC', $pagination->getLimit());
 
         while ($row = $results->fetchObject(Post::class)) {
             $items .= parent::render('posts/post',[

@@ -23,6 +23,10 @@ class Posts extends AdminPage
                 $message = 'Post editado com sucesso';
                 $type = 'success';
                 break;
+            case 'deleted':
+                $message = 'Post excluído com sucesso';
+                $type = 'success';
+                break;
             default:
                 $message = 'Retorno não identificado.';
                 $type = 'warning';
@@ -36,14 +40,14 @@ class Posts extends AdminPage
     {
         $items = '';
         
-        $total = Post::getPosts(null, null, null, 'COUNT(*) as total')->fetchObject()->total;
+        $total = Post::read(null, null, null, 'COUNT(*) as total')->fetchObject()->total;
         
         $queryParams = $request->getQueryParams();
         $current = $queryParams['pagina'] ?? 1;
 
         $pagination = new Pagination($total, $current, 2);
 
-        $results = Post::getPosts(null, 'id DESC', $pagination->getLimit());
+        $results = Post::read(null, 'id DESC', $pagination->getLimit());
 
         while ($row = $results->fetchObject(Post::class)) {
             $items .= AdminPage::render('admin/posts/item',[
@@ -65,7 +69,8 @@ class Posts extends AdminPage
         $content = View::render('admin/posts/index', [
             'maintitle' => 'Posts',
             'items' => self::getPostItems($request, $pagination),
-            'pagination' => AdminPage::getPagination($request, $pagination)
+            'pagination' => AdminPage::getPagination($request, $pagination),
+            'status' => self::getAlert($request)
         ]);
 
         return AdminPage::getAdminPanel('Posts', $content, 'posts');
