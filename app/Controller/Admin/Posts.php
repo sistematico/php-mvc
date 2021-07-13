@@ -90,7 +90,7 @@ class Posts extends AdminPage
             'maintitle' => 'Editar post',
             'title' => $post->title,
             'description' => $post->description,
-            'status' => self::getAlert('admin/alert/status', 'success', 'Post editado com sucesso')
+            'status' => self::getAlert('admin/components/alert', 'success', 'Post editado com sucesso')
         ]);
 
         return AdminPage::getAdminPanel('Editar Post', $content, 'posts');
