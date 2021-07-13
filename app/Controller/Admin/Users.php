@@ -27,6 +27,10 @@ class Users extends AdminPage
                 $message = 'Usuário excluído com sucesso';
                 $type = 'success';
                 break;
+            case 'duplicated':
+                $message = 'O e-mail e/ou usuário já está sendo usado';
+                $type = 'danger';
+                break;
             default:
                 $message = 'Retorno não identificado.';
                 $type = 'warning';
@@ -98,9 +102,12 @@ class Users extends AdminPage
         $senha = $postVars['senha'] ?? '';
 
         $user = User::getUserByEmailOrLogin($email, $login);
+        if ($user instanceof User) {
+            $request->getRouter()->redirect('/admin/users/new?status=duplicated');
+        }
 
         echo '<pre>';
-        print_r($user);
+        print_r($email);
         echo '</pre>';
         exit;
         
