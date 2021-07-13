@@ -17,6 +17,20 @@ $router->post('/users/login', [
     }
 ]);
 
+$router->get('/users/signup', [
+    'middlewares' => ['user-logout'],
+    function($request) {
+        return new Response(200, Controller\User::getUserSignup($request));
+    }
+]);
+
+$router->post('/users/signup', [
+    'middlewares' => ['user-logout'],
+    function($request) {
+        return new Response(200, Controller\User::setUserSignup($request));
+    }
+]);
+
 $router->get('/users/logout', [
     'middlewares' => ['user-login'],
     function($request) {
